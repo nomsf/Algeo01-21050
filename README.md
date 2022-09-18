@@ -11,4 +11,4 @@ Pembagian Tugas:
 
 
 Referensi:
-- ini [GitHub Pages]([https://pages.github.com/](https://github.com/rayhankinan/Algeo01-20029)).
+- ini [GitHub Pages](https://pages.github.com/](https://github.com/rayhankinan/Algeo01-20029).
