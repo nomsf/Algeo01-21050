@@ -6,9 +6,16 @@
 
 Pembagian Tugas:
 - SPL_Metode Eliminasi Gauss & Metode Eliminasi Gauss Jordan & Regresi Linear Berganda (**Abil**)
-- SPL_Matriks Balikan & Matriks Balikan & SPL_Determinan & Kaidah Cramer (**Naufal**)
+- SPL_Matriks Balikan & Matriks Balikan & Determinan & SPL_Kaidah Cramer (**Naufal**)
 - Interpolasi Polinom & Interpolasi Bicubic (**Dhiwa**)
 
-
-Referensi:
-- ini [GitHub Pages](https://pages.github.com/](https://github.com/rayhankinan/Algeo01-20029).
+## Progress Tracker
+- [ ] SPL_Metode Eliminasi Gauss
+- [ ] SPL_Metode Eliminasi Gauss Jordan
+- [ ] SPL_Matriks Balikan
+- [ ] SPL_Kaidah Cramer
+- [ ] Determinan
+- [ ] Matriks Balikan
+- [ ] Interpolasi Polinom
+- [ ] Interpolasi Bicubic
+- [ ] Regresi Linear Berganda
