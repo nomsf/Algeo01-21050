@@ -10,6 +10,7 @@ Pembagian Tugas:
 - Interpolasi Polinom & Interpolasi Bicubic (**Dhiwa**)
 
 ## Progress Tracker
+- [x] Pembagian Tugas
 - [ ] SPL_Metode Eliminasi Gauss
 - [ ] SPL_Metode Eliminasi Gauss Jordan
 - [ ] SPL_Matriks Balikan
@@ -19,3 +20,4 @@ Pembagian Tugas:
 - [ ] Interpolasi Polinom
 - [ ] Interpolasi Bicubic
 - [ ] Regresi Linear Berganda
+- [ ] Laporan
