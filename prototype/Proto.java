@@ -42,17 +42,64 @@ public class Proto {
         System.out.println("Kolom: " + COL);
 
         for (int i = 0; i < ROW; i++){
-            System.out.println();
             for (int j = 0; j < COL; j++){
                 System.out.print(mat[i][j] + " ");
             }
+            System.out.println();
         }
 
     }
-    public static void main(String[] args) {
 
-        double[][] mat = readMatrix();
+    static double[][] copyMatrix(double[][] m){
+        double[][] mcopy = new double[getRow(m)][getCol(m)];
         
-        printMatrix(mat);
+        for(int i = 0; i < getRow(m); i++){
+            for(int j = 0; j < getCol(m); j++){
+                mcopy[i][j] = m[i][j];
+            }
+        }
+        return mcopy;
+    }
+
+    static double determinanUt(double[][] m){
+        // hitung determinan dengan metode upper triangle.
+        double det = 1;
+        int i,j,k;
+        double ratio;
+        double[][] mcopy = copyMatrix(m);
+
+
+        for (i = 0; i < getRow(m); i++){
+            for (j = 0; j < getRow(m); j++){
+                mcopy[i][j] =  m[i][j];
+            }
+        }
+
+        for (i = 0; i < getRow(m); i++){
+            for (j = i+1; j < getRow(m); j++){
+                ratio = mcopy[j][i] / mcopy[i][i];
+
+                for (k = 0; k < getRow(m); k++){
+                    mcopy[j][k] = mcopy[j][k] - (ratio * mcopy[i][k]);
+                }
+            }
+        }
+        for (i = 0; i < getRow(m); i++){
+            det = det * mcopy[i][i];
+        }
+            return det;
+
+    }
+
+
+
+
+        public static void main(String[] args) {
+
+            double[][] mat = readMatrix();
+            
+            printMatrix(mat); 
+
+            System.out.println(determinanUt(mat));
     }
 }
