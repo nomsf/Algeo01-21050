@@ -1,19 +1,4 @@
 public class gauss extends Proto{
-   /* public static double[][] readMatrix(){
-        Scanner read = new Scanner(System.in); // buat obj read dari Scanner class
-        System.out.print("Masukan baris matriks: ");
-        int row = read.nextInt();  // nextInt = method dr Scanner buat ngebaca integer
-        System.out.print("Masukan kolom matriks: ");
-        int col = read.nextInt();
-        double[][] mat = new double[row][col]; // assign ukuran array
-        for (int i = 0; i < row; i++){
-            for (int j = 0; j < col; j++){
-                mat[i][j] = read.nextDouble();
-            }
-        }
-        read.close();
-        return mat;
-    }*/
     /* Gauss Elimination */
     public static double[][] gaussel(double[][] mat){
         int row = mat.length;
@@ -75,9 +60,9 @@ public class gauss extends Proto{
         else if(row == col - 1 && !manysol(mat)){
             displayStrArr(uniqsolver(mat));
         }
-        /*else{
+        else{
             displayStrArr(paramsolver(mat));
-        }*/
+        }
     }
     public static boolean isnosol(double[][] mat){
         boolean foundrow = false;
@@ -132,107 +117,67 @@ public class gauss extends Proto{
         return ans;
     }
     public static int idxlo(double[][] mat, int col){
-        boolean found = false;
-        int idx = -1;
-        int i = 0;
-        while(i < mat.length && !found){
-            if(mat[i][col] == 1){
-                idx = i;
-                found = true;
+        int i, idx;
+        boolean cek = true;
+        idx = -1;
+        for (i = 0; i < mat.length; i++) {
+            if ((mat[i][col] != 0) && (mat[i][col] != 1))
+                return -1;
+            if (mat[i][col] == 1) {
+                if (cek) {
+                    idx = i;
+                    cek = false;
+                } 
+                else {
+                    return -1;
+                }
             }
-            i++;
         }
         return idx;
     }
     public static String[] paramsolver(double[][] mat){
-        String[] result = new String[mat[0].length - 1];
         int row = mat.length;
         int col = mat[0].length;
-        char param = 'a';
+        String[] result = new String[col - 1];
+        int[] paramidx = new int[col - 1];
         int count = 0;
+        for (int i = 0; i < col - 1; i++) {
+            if (idxlo(mat, i) == -1) {
+              paramidx[count] = i;
+              count++;
+            }
+        }
         for (int i = 0; i < col - 1; i++) {
             String res = "";
             if (idxlo(mat, i) != -1) {
                 res += ("x" + (i + 1) + " = " + mat[idxlo(mat, i)][col - 1]);
-                for (int j = (i + 1); j < col - 1; j++) {
+                for (int j = i + 1; j < col - 1; j++) {
                     if (mat[idxlo(mat, i)][j] != 0) {
-                        res += (" + (" + (-1 * mat[idxlo(mat, i)][j]) + ")" + (char)(((int) param) + count));
-                        count++;
+                        res += (" + (" + (-1 * mat[idxlo(mat, i)][j]) + ")" + makeparam(j, paramidx, count));
                     }
                 }
-            } else {
-                res = "x" + (i + 1) + " = " + (char)(((int) param) + count);
-                count++;
+            } 
+            else {
+                res = "x" + (i + 1) + " = " + makeparam(i, paramidx, count);
             }
             result[i] = res;
           }
           return result;
     }
-    /*public static String[] paramsolver(double[][] mat){
-        int row = mat.length;
-        int col = mat[0].length;
+    
+    private static char makeparam(int idx, int[] paramidx, int count){
         char param = 'a';
-        int count = 0;
-        char[] solx = new char[col];
-        for(int i = 0; i < col; i++){
-            solx[i] = '.';
-        }
-        for(int i = 0; i < row; i++){
-            boolean haslo = false;
-            int j = 0;
-            while(!haslo && j < col){
-                if(mat[i][j] == 1){
-                    haslo = true;
-                }
-                j++;
-            }
-            if(!haslo){
-                solx[j - 1] = (char)(((int) param) + count);
-                count++;
-            }
-            System.out.println(solx[j - 1]);
-        }
-        String[] ans = new String[col - 1];
-        double[] res = new double[col - 1];
-        String[] resstr = new String[col];
-        for(int i = 0; i < col; i++){
-            resstr[i] = ".";
-        }
-        for (int i = row - 1; i >= 0; i--) {
-            res[i] = mat[i][col - 1];
-            boolean isparam = false;
-            for (int j = (col - 2); j > i; j--) {
-                if(solx[j] == '.'){
-                    res[i] -= mat[i][j] * res[j];
-                }
-                else{
-                    isparam = true;
-                    resstr[i] += mat[i][j] + solx[j] + "+";
-                }
-            }
-            System.out.println(resstr[i]);
-            System.out.println(isparam);
-            if(isparam){
-                ans[i] = "x" + (i + 1) + " = " + resstr[i];
-            }
-            else{
-                ans[i] = "x" + (i + 1) + " = " + res[i];
-            }
-        }
-        return ans;
-
-        boolean found = false;
-        int idx = -1;
         int i = 0;
-        while(i < mat.length && !found){
-            if(mat[i][col] == 1){
-                idx = i;
-                found = true;
+        boolean diff = true;
+        while(i < count && diff){
+            if(paramidx[i] == idx){
+                param = (char)(((int) param) + i);
+                diff = false;
             }
             i++;
         }
-        return idx;
-      }*/
+        return param;
+    }
     public static boolean iscolzero(double[][] mat, int col){
         boolean colzero = true;
         int i = 0;
@@ -244,14 +189,6 @@ public class gauss extends Proto{
         }
         return colzero;
     }
-    /*public static void displayMat(double[][] mat){
-        for (int i = 0; i < mat.length; i++) {
-          for (int j = 0; j < mat[i].length; j++){
-            System.out.print(mat[i][j] + " ");
-          }
-          System.out.println();
-        }
-    }*/
     public static void displayStrArr(String[] arr){
         for (int i = 0; i < arr.length; i++) {
             System.out.println(arr[i]);
@@ -263,10 +200,4 @@ public class gauss extends Proto{
         printMatrix(mat);
         splsolver(mat);
     }
-    /*public static double[][] multiplyrow (double[][] mat, int row, int x){
-        for(int i = 0; i < mat[row].length; i++){
-            mat[row][i] *= x;
-        }
-        return mat;
-    }*/
 }
