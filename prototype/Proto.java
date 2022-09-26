@@ -210,10 +210,6 @@ public class Proto {
 
     }
 
-    // static double determinanKofaktor(double[][] mat){
-
-    // }
-
 
 
 
