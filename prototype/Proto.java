@@ -61,8 +61,32 @@ public class Proto {
         return mcopy;
     }
 
+    static int correctionPos(double[][] m){
+        // tuker tuker baris biar valid pas dimasukin ke determinanUt
+        // juga menghasilkan konstanta p untuk nentuin pos/neg determinant nya
+        int n = getRow(m);
+        int p = 1;
+
+        int[] zero = new int[n];
+
+        // ngitung jumlah 0 pertama di tiap baris
+        for (int i = 0; i < n; i++){
+            for (int j = 0; j < n; j++){
+                if (m[i][j] == 0){
+                    zero[i] += 1;
+                }
+                else {
+                    continue;
+                }
+            }
+        }
+
+        return p;
+    }
+
     static double determinanUt(double[][] m){
         // hitung determinan dengan metode upper triangle.
+        // ERROR : Kalau mat[0][0] / mat[1][1] = 0 hasilnya salah.
         double det = 1;
         int i,j,k;
         double ratio;
@@ -90,6 +114,10 @@ public class Proto {
             return det;
 
     }
+
+    // static double determinanKofaktor(double[][] mat){
+
+    // }
 
 
 
