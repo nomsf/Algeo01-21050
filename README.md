@@ -11,8 +11,8 @@ Pembagian Tugas:
 
 ## Progress Tracker
 - [x] Pembagian Tugas
-- [ ] SPL_Metode Eliminasi Gauss
-- [ ] SPL_Metode Eliminasi Gauss Jordan
+- [x] SPL_Metode Eliminasi Gauss
+- [x] SPL_Metode Eliminasi Gauss Jordan
 - [ ] SPL_Matriks Balikan
 - [ ] SPL_Kaidah Cramer
 - [ ] Determinan
