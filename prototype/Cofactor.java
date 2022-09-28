@@ -5,15 +5,13 @@ public class Cofactor extends Proto{
         int x = 0, y = 0;
 
         for(int i = 0; i < getRow(m); i++){
-            x++;
-            y = 0;
             for(int j = 0; j < getRow(m); j++){
                 if( i != a && j != b){
 
                     me[x][y] = m[i][j];
                     y++;
                 }
-                if(y == getRow(me)-1){
+                if(y == getRow(me)){
                     x++;
                     y = 0;
                 }
