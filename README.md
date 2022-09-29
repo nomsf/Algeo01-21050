@@ -15,7 +15,7 @@ Pembagian Tugas:
 - [x] SPL_Metode Eliminasi Gauss Jordan
 - [ ] SPL_Matriks Balikan
 - [ ] SPL_Kaidah Cramer
-- [ ] Determinan
+- [x] Determinan
 - [ ] Matriks Balikan
 - [ ] Interpolasi Polinom
 - [ ] Interpolasi Bicubic
