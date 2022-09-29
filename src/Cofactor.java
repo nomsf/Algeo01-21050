@@ -43,7 +43,7 @@ public class Cofactor extends Proto{
 
         // kofaktor adalah determinan dari elemen kecuali yang di kofaktorin.
 
-        if (isRowZero(m) || isColZero(m)){
+        if (MatrixOp.isRowZero(m) || MatrixOp.isColZero(m)){
             return 0;
         }
         else if(m.length == 1){

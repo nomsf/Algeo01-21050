@@ -1,10 +1,24 @@
 public class MatrixOp {
-    public static int getRow(double[][] m){
+    static int getRow(double[][] m){
         return m.length;
     }
 
-    public static int getCol(double[][] m){
+    static int getCol(double[][] m){
         return m[0].length;
+    }
+
+    static void printMatrix(double[][] mat){
+        int ROW = getRow(mat);
+        int COL = getCol(mat);
+
+
+        for (int i = 0; i < ROW; i++){
+            for (int j = 0; j < COL; j++){
+                System.out.print(mat[i][j] + " ");
+            }
+            System.out.println();
+        }
+
     }
     static double[][] copyMatrix(double[][] m){
         double[][] mcopy = new double[getRow(m)][getCol(m)];
@@ -50,7 +64,6 @@ public class MatrixOp {
             }
         }
     }
-
     public static boolean iscolzero(double[][] mat, int col){
         boolean colzero = true;
         int i = 0;
@@ -63,9 +76,41 @@ public class MatrixOp {
         return colzero;
     }
     public static void displayStrArr(String[] arr){
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length; i++){
             System.out.println(arr[i]);
         }
     }
+    static boolean isRowZero(double[][] mat){
+        // cek apakah ada baris yang seluruhnya 0
+        boolean zeroRow = false;
 
+        for (int i = 0; i < MatrixOp.getRow(mat); i++){
+            for (int j = 0; j < MatrixOp.getRow(mat); j++){
+                if (mat[i][j] != 0){
+                    break;
+                }
+                else if (mat[i][j] == 0 && j == MatrixOp.getRow(mat)-1){
+                    zeroRow = true;
+                    break;
+                }
+            }
+        }
+        return zeroRow;
+    }
+    static boolean isColZero(double[][] mat){
+        // cek apakah ada kolom yang seluruhnya 0
+        boolean zeroRow = false;
+        for (int i = 0; i < MatrixOp.getCol(mat); i++){
+            for (int j = 0; j < MatrixOp.getCol(mat); j++){
+                if (mat[i][j] != 0){
+                    break;
+                }
+                else if (mat[i][j] == 0 && j == MatrixOp.getCol(mat)-1){
+                    zeroRow = true;
+                    break;
+                }
+            }
+        }
+        return zeroRow;
+    }
 }
