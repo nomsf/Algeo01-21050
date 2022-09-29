@@ -17,10 +17,10 @@ public class InverseAdjoin {
     public static void main(String[] args){
         double[][] m;
 
-        m = MatrixOp.readMatrix();
+        m = IOKeyboard.readMatrix();
 
-        MatrixOp.printMatrix(m);
+        IOKeyboard.printMatrix(m);
 
-        MatrixOp.printMatrix(inverseAdjoin(m));
+        IOKeyboard.printMatrix(inverseAdjoin(m));
     }
 }

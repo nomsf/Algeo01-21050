@@ -71,27 +71,25 @@ public class InverseGauss {
                 }
 
             }
-        }
-        
-    
+        }    
     }
 
     public static void main(String[] args){
         
-        double[][] m = MatrixOp.readMatrix();
+        double[][] m = IOKeyboard.readMatrix();
 
-        MatrixOp.printMatrix(m);
+        IOKeyboard.printMatrix(m);
 
         System.out.println();
 
         double[][] mr = addIdentity(m);
 
-        MatrixOp.printMatrix(mr);
+        IOKeyboard.printMatrix(mr);
 
         System.out.println();
 
         gaussJordan(mr);
 
-        MatrixOp.printMatrix(mr);
+        IOKeyboard.printMatrix(mr);
     }
 }

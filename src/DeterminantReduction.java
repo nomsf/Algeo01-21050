@@ -79,7 +79,7 @@ public class DeterminantReduction {
             }
 
             int p = correctionPos(mcopy);
-            MatrixOp.printMatrix(mcopy);
+            IOKeyboard.printMatrix(mcopy);
     
             for (i = 0; i < MatrixOp.getRow(m); i++){
                 for (j = i+1; j < MatrixOp.getRow(m); j++){
@@ -94,7 +94,7 @@ public class DeterminantReduction {
                 det = det * mcopy[i][i];
             }
 
-            MatrixOp.printMatrix(mcopy);
+            IOKeyboard.printMatrix(mcopy);
 
         return p * det;
         }
@@ -106,9 +106,9 @@ public class DeterminantReduction {
 
         public static void main(String[] args) {
 
-            double[][] mat = MatrixOp.readMatrix();
+            double[][] mat = IOKeyboard.readMatrix();
             
-            MatrixOp.printMatrix(mat); 
+            IOKeyboard.printMatrix(mat); 
             
 
             System.out.println(determinanUt(mat));

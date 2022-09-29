@@ -6,20 +6,6 @@ public class MatrixOp {
     static int getCol(double[][] m){
         return m[0].length;
     }
-
-    static void printMatrix(double[][] mat){
-        int ROW = getRow(mat);
-        int COL = getCol(mat);
-
-
-        for (int i = 0; i < ROW; i++){
-            for (int j = 0; j < COL; j++){
-                System.out.print(mat[i][j] + " ");
-            }
-            System.out.println();
-        }
-
-    }
     static double[][] copyMatrix(double[][] m){
         double[][] mcopy = new double[getRow(m)][getCol(m)];
         
@@ -99,18 +85,19 @@ public class MatrixOp {
     }
     static boolean isColZero(double[][] mat){
         // cek apakah ada kolom yang seluruhnya 0
-        boolean zeroRow = false;
-        for (int i = 0; i < MatrixOp.getCol(mat); i++){
-            for (int j = 0; j < MatrixOp.getCol(mat); j++){
-                if (mat[i][j] != 0){
+        boolean zeroCol = false;
+
+        for (int i = 0; i < MatrixOp.getRow(mat); i++){
+            for (int j = 0; j < MatrixOp.getRow(mat); j++){
+                if (mat[j][i] != 0){
                     break;
                 }
-                else if (mat[i][j] == 0 && j == MatrixOp.getCol(mat)-1){
-                    zeroRow = true;
+                else if (mat[j][i] == 0 && j == MatrixOp.getRow(mat)-1){
+                    zeroCol = true;
                     break;
                 }
             }
         }
-        return zeroRow;
+        return zeroCol;
     }
 }
