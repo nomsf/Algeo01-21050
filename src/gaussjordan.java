@@ -1,5 +1,5 @@
-public class gaussjordan extends Proto{
-    /* Gauss Elimination */
+public class gaussjordan{
+    /* Gauss Jordan Elimination */
     public static double[][] gaussel(double[][] mat){
         int row = mat.length;
         int col = mat[0].length;
@@ -176,7 +176,6 @@ public class gaussjordan extends Proto{
           }
           return result;
     }
-    
     private static char makeparam(int idx, int[] paramidx, int count){
         char param = 'a';
         int i = 0;
@@ -190,6 +189,7 @@ public class gaussjordan extends Proto{
         }
         return param;
     }
+    /* Kelompok primitif tambahan */
     public static boolean iscolzero(double[][] mat, int col){
         boolean colzero = true;
         int i = 0;
@@ -205,11 +205,5 @@ public class gaussjordan extends Proto{
         for (int i = 0; i < arr.length; i++) {
             System.out.println(arr[i]);
         }
-    }
-    public static void main(String[] args) {
-        double[][] mat;
-        mat = gaussel(readMatrix());
-        printMatrix(mat);
-        splsolver(mat);
     }
 }

@@ -1,5 +1,3 @@
-
-
 public class Interpolasipolinom extends Proto{ 
     public static double approach(double[] koefisien,double X)
     {

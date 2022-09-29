@@ -1,32 +1,4 @@
-
-import java.util.Scanner; // package buat ngebaca input user
-// dia ngeimport class Scanner trus aksesnya harus bikin object dulu kayanya
-
-
 public class MatrixOp {
-
-
-    public static double[][] readMatrix(){
-        Scanner read = new Scanner(System.in); // buat obj read dari Scanner class
-
-        System.out.print("Masukan baris matriks: ");
-        int row = read.nextInt();  // nextInt = method dr Scanner buat ngebaca integer
-
-        System.out.print("Masukan kolom matriks: ");
-        int col = read.nextInt();
-
-        double[][] mat = new double[row][col]; // assign ukuran array
-
-        for (int i = 0; i < row; i++){
-            for (int j = 0; j < col; j++){
-                //System.out.print("Masukan elemen Matriks [" + i +"][" + j + "] : ");
-                mat[i][j] = read.nextDouble();
-            }
-        }
-        read.close();
-        return mat;
-    }
-
     static int getRow(double[][] m){
         return m.length;
     }
@@ -34,21 +6,6 @@ public class MatrixOp {
     static int getCol(double[][] m){
         return m[0].length;
     }
-
-    static void printMatrix(double[][] mat){
-        int ROW = getRow(mat);
-        int COL = getCol(mat);
-
-
-        for (int i = 0; i < ROW; i++){
-            for (int j = 0; j < COL; j++){
-                System.out.print(mat[i][j] + " ");
-            }
-            System.out.println();
-        }
-
-    }
-
     static double[][] copyMatrix(double[][] m){
         double[][] mcopy = new double[getRow(m)][getCol(m)];
         
@@ -93,7 +50,22 @@ public class MatrixOp {
             }
         }
     }
-
+    public static boolean iscolzero(double[][] mat, int col){
+        boolean colzero = true;
+        int i = 0;
+        while (colzero && i < mat.length){
+            if (mat[i][col] != 0){
+                colzero = false;
+            }
+            i++;
+        }
+        return colzero;
+    }
+    public static void displayStrArr(String[] arr){
+        for (int i = 0; i < arr.length; i++){
+            System.out.println(arr[i]);
+        }
+    }
     static boolean isRowZero(double[][] mat){
         // cek apakah ada baris yang seluruhnya 0
         boolean zeroRow = false;
@@ -111,7 +83,6 @@ public class MatrixOp {
         }
         return zeroRow;
     }
-
     static boolean isColZero(double[][] mat){
         // cek apakah ada kolom yang seluruhnya 0
         boolean zeroCol = false;
@@ -129,13 +100,4 @@ public class MatrixOp {
         }
         return zeroCol;
     }
-
-    public static void main(String[] args){
-        double[][] m;
-
-        m = readMatrix();
-
-        System.out.println(getRow(m));
-    }
-
 }

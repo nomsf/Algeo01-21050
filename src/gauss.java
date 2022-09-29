@@ -1,4 +1,4 @@
-public class gauss extends Proto{
+public class gauss{
     /* Gauss Elimination */
     public static double[][] gaussel(double[][] mat){
         int row = mat.length;
@@ -6,7 +6,7 @@ public class gauss extends Proto{
         int pivotcol = 0;
         int idx = 0;
         while(pivotcol < col && idx < row){
-            if(iscolzero(mat, pivotcol)){
+            if(MatrixOp.iscolzero(mat, pivotcol)){
                 pivotcol++;
             }
             else{
@@ -58,10 +58,10 @@ public class gauss extends Proto{
             System.out.println("SPL tidak memiliki solusi");
         }
         else if(row == col - 1 && !manysol(mat)){
-            displayStrArr(uniqsolver(mat));
+            MatrixOp.displayStrArr(uniqsolver(mat));
         }
         else{
-            displayStrArr(paramsolver(mat));
+            MatrixOp.displayStrArr(paramsolver(mat));
         }
     }
     public static boolean isnosol(double[][] mat){
@@ -136,7 +136,6 @@ public class gauss extends Proto{
         return idx;
     }
     public static String[] paramsolver(double[][] mat){
-        int row = mat.length;
         int col = mat[0].length;
         String[] result = new String[col - 1];
         int[] paramidx = new int[col - 1];
@@ -178,26 +177,15 @@ public class gauss extends Proto{
         }
         return param;
     }
-    public static boolean iscolzero(double[][] mat, int col){
-        boolean colzero = true;
-        int i = 0;
-        while (colzero && i < mat.length){
-            if (mat[i][col] != 0){
-                colzero = false;
-            }
-            i++;
+    /* Driver */
+    public static void gaussdriver() {
+        int opt = Menu.InputOption();
+        if(opt == 1){
+            double[][] mat = IOKeyboard.readMatrixSPL();
+            splsolver(gaussel(mat));
         }
-        return colzero;
-    }
-    public static void displayStrArr(String[] arr){
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
-        }
-    }
-    public static void main(String[] args) {
-        double[][] mat;
-        mat = gaussel(readMatrix());
-        printMatrix(mat);
-        splsolver(mat);
+        /*else{
+            
+        }*/
     }
 }

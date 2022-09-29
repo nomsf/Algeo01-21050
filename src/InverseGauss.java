@@ -83,9 +83,9 @@ public class InverseGauss {
 
     public static void main(String[] args){
         
-        double[][] m = MatrixOp.readMatrix();
+        double[][] m = IOKeyboard.readMatrix();
 
-        MatrixOp.printMatrix(m);
+        IOKeyboard.printMatrix(m);
 
         MatrixOp.printMatrix(inverseGauss(m));
     }
