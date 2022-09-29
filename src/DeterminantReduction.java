@@ -1,7 +1,7 @@
 // ini file buat ngetes algoritma nya aja
 
 
-public class Proto {
+public class DeterminantReduction {
 
     // static boolean isCorrect(double[][] m){
     //     // apakah bentuknya udah bener
@@ -58,43 +58,6 @@ public class Proto {
     return p;
     }
 
-    static boolean isRowZero(double[][] mat){
-        // cek apakah ada baris yang seluruhnya 0
-        boolean zeroRow = false;
-
-        for (int i = 0; i < MatrixOp.getRow(mat); i++){
-            for (int j = 0; j < MatrixOp.getRow(mat); j++){
-                if (mat[i][j] != 0){
-                    break;
-                }
-                else if (mat[i][j] == 0 && j == MatrixOp.getRow(mat)-1){
-                    zeroRow = true;
-                    break;
-                }
-            }
-        }
-        return zeroRow;
-    }
-
-    static boolean isColZero(double[][] mat){
-        // cek apakah ada kolom yang seluruhnya 0
-        boolean zeroCol = false;
-
-        for (int i = 0; i < MatrixOp.getRow(mat); i++){
-            for (int j = 0; j < MatrixOp.getRow(mat); j++){
-                if (mat[j][i] != 0){
-                    break;
-                }
-                else if (mat[j][i] == 0 && j == MatrixOp.getRow(mat)-1){
-                    zeroCol = true;
-                    break;
-                }
-            }
-        }
-        return zeroCol;
-    }
-
-
 
     static double determinanUt(double[][] m){
         // hitung determinan dengan metode upper triangle.
@@ -104,7 +67,7 @@ public class Proto {
         double ratio;
         double[][] mcopy = MatrixOp.copyMatrix(m);
         
-        if (isRowZero(m) || isColZero(m)){
+        if (MatrixOp.isRowZero(m) || MatrixOp.isColZero(m)){
             return 0;
         }
         else{

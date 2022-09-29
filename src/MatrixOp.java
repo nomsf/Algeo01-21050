@@ -19,7 +19,7 @@ public class MatrixOp {
 
         for (int i = 0; i < row; i++){
             for (int j = 0; j < col; j++){
-                System.out.print("Masukan elemen Matriks [" + i +"][" + j + "] : ");
+                //System.out.print("Masukan elemen Matriks [" + i +"][" + j + "] : ");
                 mat[i][j] = read.nextDouble();
             }
         }
@@ -92,6 +92,50 @@ public class MatrixOp {
                 m[j][i] = temp[i][j];
             }
         }
+    }
+
+    static boolean isRowZero(double[][] mat){
+        // cek apakah ada baris yang seluruhnya 0
+        boolean zeroRow = false;
+
+        for (int i = 0; i < MatrixOp.getRow(mat); i++){
+            for (int j = 0; j < MatrixOp.getRow(mat); j++){
+                if (mat[i][j] != 0){
+                    break;
+                }
+                else if (mat[i][j] == 0 && j == MatrixOp.getRow(mat)-1){
+                    zeroRow = true;
+                    break;
+                }
+            }
+        }
+        return zeroRow;
+    }
+
+    static boolean isColZero(double[][] mat){
+        // cek apakah ada kolom yang seluruhnya 0
+        boolean zeroCol = false;
+
+        for (int i = 0; i < MatrixOp.getRow(mat); i++){
+            for (int j = 0; j < MatrixOp.getRow(mat); j++){
+                if (mat[j][i] != 0){
+                    break;
+                }
+                else if (mat[j][i] == 0 && j == MatrixOp.getRow(mat)-1){
+                    zeroCol = true;
+                    break;
+                }
+            }
+        }
+        return zeroCol;
+    }
+
+    public static void main(String[] args){
+        double[][] m;
+
+        m = readMatrix();
+
+        System.out.println(getRow(m));
     }
 
 }
