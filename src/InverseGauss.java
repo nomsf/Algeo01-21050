@@ -63,17 +63,22 @@ public class InverseGauss {
 
         double[][] minv = new double[MatrixOp.getRow(m)][MatrixOp.getCol(m)];
         
+        MatrixOp.printMatrix(minv);
         for (int i = 0; i < MatrixOp.getRow(mr); i++){
             for(int j = 0; j < MatrixOp.getCol(mr); j++){
-
-                if(i >= MatrixOp.getRow(m)){
-                    // minv[k][l] ;
+                if(j >= MatrixOp.getCol(m)){
+                    if(j == MatrixOp.getCol(m)){
+                        l = 0;
+                    }
+                    minv[k][l] = mr[i][j];
+                    l++;
                 }
 
             }
+            k++;
         }
         
-    
+        return minv;
     }
 
     public static void main(String[] args){
@@ -82,16 +87,6 @@ public class InverseGauss {
 
         MatrixOp.printMatrix(m);
 
-        System.out.println();
-
-        double[][] mr = addIdentity(m);
-
-        MatrixOp.printMatrix(mr);
-
-        System.out.println();
-
-        gaussJordan(mr);
-
-        MatrixOp.printMatrix(mr);
+        MatrixOp.printMatrix(inverseGauss(m));
     }
 }
