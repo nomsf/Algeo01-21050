@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class gauss{
     /* Gauss Elimination */
     public static double[][] gaussel(double[][] mat){
@@ -179,9 +180,10 @@ public class gauss{
     }
     /* Driver */
     public static void gaussdriver() {
-        int opt = Menu.InputOption();
+        Scanner read = new Scanner(System.in);
+        int opt = IOKeyboard.InputOption(read);
         if(opt == 2){
-            double[][] mat = IOKeyboard.readMatrixSPL();
+            double[][] mat = IOKeyboard.readMatrixSPL(read);
             splsolverprint(gaussel(mat));
         }
         else{
@@ -191,6 +193,7 @@ public class gauss{
             double[][] mat = IOFile.readFile(fileName, row, col);
             splsolverprint(gaussel(mat));
         }
+        read.close();
     }
     public static void main(String[] args) {
         gaussdriver();

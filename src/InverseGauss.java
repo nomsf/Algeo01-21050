@@ -63,7 +63,7 @@ public class InverseGauss {
 
         double[][] minv = new double[MatrixOp.getRow(m)][MatrixOp.getCol(m)];
         
-        MatrixOp.printMatrix(minv);
+        IOKeyboard.printMatrix(minv);
         for (int i = 0; i < MatrixOp.getRow(mr); i++){
             for(int j = 0; j < MatrixOp.getCol(mr); j++){
                 if(j >= MatrixOp.getCol(m)){
@@ -87,6 +87,6 @@ public class InverseGauss {
 
         IOKeyboard.printMatrix(m);
 
-        MatrixOp.printMatrix(inverseGauss(m));
+        IOKeyboard.printMatrix(inverseGauss(m));
     }
 }

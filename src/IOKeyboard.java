@@ -1,7 +1,13 @@
 import java.util.Scanner; 
 public class IOKeyboard{
-    public static double[][] readMatrix(){
-        Scanner read = new Scanner(System.in); // buat obj read dari Scanner class
+    public static int InputOption(Scanner read){
+        System.out.println("Pilih masukan melalui:");
+        System.out.println("1. File");
+        System.out.println("2. Keyboard");
+        int i = read.nextInt();
+        return i;
+    }
+    public static double[][] readMatrix(Scanner read){
         System.out.print("Masukan baris matriks: ");
         int row = 0, col = 0;
         if (read.hasNext()){
@@ -18,29 +24,26 @@ public class IOKeyboard{
                 mat[i][j] = read.nextDouble();
             }
         }
-        read.close();
         return mat;
     }
-    public static double[][] readMatrixSPL(){
-        Scanner read1 = new Scanner(System.in); // buat obj read dari Scanner class
+    public static double[][] readMatrixSPL(Scanner read){
         System.out.print("Masukan baris matriks: ");
-        int row = read1.nextInt();  // nextInt = method dr Scanner buat ngebaca integer
+        int row = read.nextInt();  // nextInt = method dr Scanner buat ngebaca integer
         System.out.print("Masukan kolom matriks: ");
-        int col = read1.nextInt();
+        int col = read.nextInt();
         double[][] mat = new double[row][col]; // assign ukuran array
         for (int i = 0; i < row; i++){
             for (int j = 0; j < col; j++){
                 if(j == col - 1){
                     System.out.print("Masukan b[" + i + "]: ");
-                    mat[i][j] = read1.nextDouble();
+                    mat[i][j] = read.nextDouble();
                 }
                 else{
                     System.out.print("Masukan koefisien a[" + i +"][" + j + "]: ");
-                    mat[i][j] = read1.nextDouble();
+                    mat[i][j] = read.nextDouble();
                 }
             }
         }
-        read1.close();
         return mat;
     }
     static void printMatrix(double[][] mat){
