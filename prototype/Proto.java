@@ -1,79 +1,7 @@
 // ini file buat ngetes algoritma nya aja
 
-import java.util.Scanner; // package buat ngebaca input user
-// dia ngeimport class Scanner trus aksesnya harus bikin object dulu kayanya
 
 public class Proto {
-
-    public static double[][] readMatrix(){
-        Scanner read = new Scanner(System.in); // buat obj read dari Scanner class
-
-        System.out.print("Masukan baris matriks: ");
-        int row = read.nextInt();  // nextInt = method dr Scanner buat ngebaca integer
-
-        System.out.print("Masukan kolom matriks: ");
-        int col = read.nextInt();
-
-        double[][] mat = new double[row][col]; // assign ukuran array
-
-        for (int i = 0; i < row; i++){
-            for (int j = 0; j < col; j++){
-                System.out.print("Masukan elemen Matriks [" + i +"][" + j + "] : ");
-                mat[i][j] = read.nextDouble();
-            }
-        }
-        read.close();
-        return mat;
-    }
-
-    static int getRow(double[][] m){
-        return m.length;
-    }
-
-    static int getCol(double[][] m){
-        return m[0].length;
-    }
-
-    static void printMatrix(double[][] mat){
-        int ROW = getRow(mat);
-        int COL = getCol(mat);
-
-        System.out.println("Baris: " + ROW);
-        System.out.println("Kolom: " + COL);
-
-        for (int i = 0; i < ROW; i++){
-            for (int j = 0; j < COL; j++){
-                System.out.print(mat[i][j] + " ");
-            }
-            System.out.println();
-        }
-
-    }
-
-    static double[][] copyMatrix(double[][] m){
-        double[][] mcopy = new double[getRow(m)][getCol(m)];
-        
-        for(int i = 0; i < getRow(m); i++){
-            for(int j = 0; j < getCol(m); j++){
-                mcopy[i][j] = m[i][j];
-            }
-        }
-        return mcopy;
-    }
-
-    static void copyRow(double[] rcopy, double[] rori,int n){
-        for (int i = 0; i < n; i++){
-            rcopy[i] = rori[i];
-        }
-    }
-
-    static int findVal(int[] arr, int val){
-        // return index dari value yg ditemukan
-        for(int i = 0; i < arr.length; i++){
-
-        }
-        return 0;
-    }
 
     // static boolean isCorrect(double[][] m){
     //     // apakah bentuknya udah bener
@@ -98,7 +26,7 @@ public class Proto {
     static int correctionPos(double[][] m){
         // tuker tuker baris biar valid pas dimasukin ke determinanUt
         // juga menghasilkan konstanta p untuk nentuin pos/neg determinant nya
-        int n = getRow(m);
+        int n = MatrixOp.getRow(m);
         int zero = 0;
         int p = 1;
         boolean swap;
@@ -134,12 +62,12 @@ public class Proto {
         // cek apakah ada baris yang seluruhnya 0
         boolean zeroRow = false;
 
-        for (int i = 0; i < getRow(mat); i++){
-            for (int j = 0; j < getRow(mat); j++){
+        for (int i = 0; i < MatrixOp.getRow(mat); i++){
+            for (int j = 0; j < MatrixOp.getRow(mat); j++){
                 if (mat[i][j] != 0){
                     break;
                 }
-                else if (mat[i][j] == 0 && j == getRow(mat)-1){
+                else if (mat[i][j] == 0 && j == MatrixOp.getRow(mat)-1){
                     zeroRow = true;
                     break;
                 }
@@ -152,12 +80,12 @@ public class Proto {
         // cek apakah ada kolom yang seluruhnya 0
         boolean zeroCol = false;
 
-        for (int i = 0; i < getRow(mat); i++){
-            for (int j = 0; j < getRow(mat); j++){
+        for (int i = 0; i < MatrixOp.getRow(mat); i++){
+            for (int j = 0; j < MatrixOp.getRow(mat); j++){
                 if (mat[j][i] != 0){
                     break;
                 }
-                else if (mat[j][i] == 0 && j == getRow(mat)-1){
+                else if (mat[j][i] == 0 && j == MatrixOp.getRow(mat)-1){
                     zeroCol = true;
                     break;
                 }
@@ -174,36 +102,36 @@ public class Proto {
         double det = 1;
         int i,j,k;
         double ratio;
-        double[][] mcopy = copyMatrix(m);
+        double[][] mcopy = MatrixOp.copyMatrix(m);
         
         if (isRowZero(m) || isColZero(m)){
             return 0;
         }
         else{
 
-            for (i = 0; i < getRow(m); i++){
-                for (j = 0; j < getRow(m); j++){
+            for (i = 0; i < MatrixOp.getRow(m); i++){
+                for (j = 0; j < MatrixOp.getRow(m); j++){
                     mcopy[i][j] =  m[i][j];
                 }
             }
 
             int p = correctionPos(mcopy);
-            printMatrix(mcopy);
+            MatrixOp.printMatrix(mcopy);
     
-            for (i = 0; i < getRow(m); i++){
-                for (j = i+1; j < getRow(m); j++){
+            for (i = 0; i < MatrixOp.getRow(m); i++){
+                for (j = i+1; j < MatrixOp.getRow(m); j++){
                     ratio = mcopy[j][i] / mcopy[i][i];
     
-                    for (k = 0; k < getRow(m); k++){
+                    for (k = 0; k < MatrixOp.getRow(m); k++){
                         mcopy[j][k] = mcopy[j][k] - (ratio * mcopy[i][k]);
                     }
                 }
             }
-            for (i = 0; i < getRow(m); i++){
+            for (i = 0; i < MatrixOp.getRow(m); i++){
                 det = det * mcopy[i][i];
             }
 
-            printMatrix(mcopy);
+            MatrixOp.printMatrix(mcopy);
 
         return p * det;
         }
@@ -215,9 +143,9 @@ public class Proto {
 
         public static void main(String[] args) {
 
-            double[][] mat = readMatrix();
+            double[][] mat = MatrixOp.readMatrix();
             
-            printMatrix(mat); 
+            MatrixOp.printMatrix(mat); 
             
 
             System.out.println(determinanUt(mat));
