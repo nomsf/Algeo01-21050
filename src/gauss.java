@@ -51,7 +51,7 @@ public class gauss{
         return mat;
     }
     /* Kelompok SPL Solver */
-    public static void splsolver(double[][] mat){
+    public static void splsolverprint(double[][] mat){
         int row = mat.length;
         int col = mat[0].length;
         if(isnosol(mat) || row > col - 1){
@@ -180,12 +180,19 @@ public class gauss{
     /* Driver */
     public static void gaussdriver() {
         int opt = Menu.InputOption();
-        if(opt == 1){
+        if(opt == 2){
             double[][] mat = IOKeyboard.readMatrixSPL();
-            splsolver(gaussel(mat));
+            splsolverprint(gaussel(mat));
         }
-        /*else{
-            
-        }*/
+        else{
+            String fileName = IOFile.InputFileName();
+            int row = IOFile.RowCounter(fileName);
+            int col = IOFile.ColCounter(fileName);
+            double[][] mat = IOFile.readFile(fileName, row, col);
+            splsolverprint(gaussel(mat));
+        }
+    }
+    public static void main(String[] args) {
+        gaussdriver();
     }
 }
