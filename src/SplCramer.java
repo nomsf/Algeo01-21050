@@ -12,7 +12,7 @@ public class SplCramer{
         double[][] mB = new double[mrow][1]; 
         double[][] mtemp = new double[mrow][mrow];
 
-        for (int i = 0; i < mrow; i++ ){// buat split matrixnya jadi matrix a dan b
+        for (int i = 0; i < mrow; i++ ){    // buat split matrixnya jadi matrix a dan b
             for (int j = 0; j < mcol; j++){
                 if(j == mcol - 1){
                     mB[k][0] = m[i][j];
