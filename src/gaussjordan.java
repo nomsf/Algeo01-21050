@@ -157,8 +157,8 @@ public class gaussjordan{
         int count = 0;
         for (int i = 0; i < col - 1; i++) {
             if (idxlo(mat, i) == -1) {
-              paramidx[count] = i;
-              count++;
+                paramidx[count] = i;
+                count++;
             }
         }
         for (int i = 0; i < col - 1; i++) {
@@ -195,11 +195,11 @@ public class gaussjordan{
     public static void gaussjordandriver() {
         Scanner read = new Scanner(System.in);
         int opt = IOKeyboard.InputOption(read);
-        if(opt == 2){
+        if(opt == 1){
             double[][] mat = IOKeyboard.readMatrixSPL(read);
             splsolverprint(gaussel(mat));
         }
-        else{
+        else if(opt == 2){
             String fileName = IOFile.InputFileName(read);
             int row = IOFile.RowCounter(fileName);
             System.out.println(row);
@@ -207,6 +207,8 @@ public class gaussjordan{
             System.out.println(col);
             double[][] mat = IOFile.readFile(fileName, row, col);
             splsolverprint(gaussel(mat));
+            int i = IOKeyboard.WritetoFileOption(read);
+            if()
         }
         read.close();
     }

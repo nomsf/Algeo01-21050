@@ -183,18 +183,20 @@ public class gauss{
     public static void gaussdriver() {
         Scanner read = new Scanner(System.in);
         int opt = IOKeyboard.InputOption(read);
-        if(opt == 2){
+        if(opt == 1){
             double[][] mat = IOKeyboard.readMatrixSPL(read);
             splsolverprint(gaussel(mat));
         }
-        /*else{
-            String fileName = IOFile.InputFileName();
+        else if(opt == 2){
+            String fileName = IOFile.InputFileName(read);
             int row = IOFile.RowCounter(fileName);
+            System.out.println(row);
             int col = IOFile.ColCounter(fileName);
+            System.out.println(col);
             double[][] mat = IOFile.readFile(fileName, row, col);
             splsolverprint(gaussel(mat));
         }
-        read.close();*/
+        read.close();
     }
     public static void main(String[] args) {
         gaussdriver();
