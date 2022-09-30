@@ -6,7 +6,7 @@ public class gaussjordan{
         int pivotcol = 0;
         int idx = 0;
         while(pivotcol < col && idx < row){
-            if(iscolzero(mat, pivotcol)){
+            if(MatrixOp.iscolzero(mat, pivotcol)){
                 pivotcol++;
             }
             else{
@@ -71,10 +71,10 @@ public class gaussjordan{
             System.out.println("SPL tidak memiliki solusi");
         }
         else if(row == col - 1 && !manysol(mat)){
-            displayStrArr(uniqsolver(mat));
+            MatrixOp.displayStrArr(uniqsolver(mat));
         }
         else{
-            displayStrArr(paramsolver(mat));
+            MatrixOp.displayStrArr(paramsolver(mat));
         }
     }
     public static boolean isnosol(double[][] mat){
@@ -189,21 +189,14 @@ public class gaussjordan{
         }
         return param;
     }
-    /* Kelompok primitif tambahan */
-    public static boolean iscolzero(double[][] mat, int col){
-        boolean colzero = true;
-        int i = 0;
-        while (colzero && i < mat.length){
-            if (mat[i][col] != 0){
-                colzero = false;
-            }
-            i++;
+    public static void gaussjordandriver() {
+        int opt = Menu.InputOption();
+        if(opt == 1){
+            double[][] mat = IOKeyboard.readMatrix();
+            splsolver(gaussel(mat));
         }
-        return colzero;
-    }
-    public static void displayStrArr(String[] arr){
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
-        }
+        /*else{
+            
+        }*/
     }
 }

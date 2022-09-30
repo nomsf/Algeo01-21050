@@ -82,10 +82,10 @@ public class InverseGauss {
 
     public static void main(String[] args){
         
-        double[][] m = IOKeyboard.readMatrix();
+        // double[][] m = IOKeyboard.readMatrix();
 
-        IOKeyboard.printMatrix(m);
+        // IOKeyboard.printMatrix(m);
 
-        IOKeyboard.printMatrix(inverseGauss(m));
+        // IOKeyboard.printMatrix(inverseGauss(m));
     }
 }

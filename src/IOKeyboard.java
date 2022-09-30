@@ -1,11 +1,22 @@
 import java.util.Scanner; 
 public class IOKeyboard{
-    public static double[][] readMatrix(){
-        Scanner read = new Scanner(System.in); // buat obj read dari Scanner class
+    public static int InputOption(Scanner read){
+        System.out.println("Pilih masukan melalui:");
+        System.out.println("1. File");
+        System.out.println("2. Keyboard");
+        int i = read.nextInt();
+        return i;
+    }
+    public static double[][] readMatrix(Scanner read){
         System.out.print("Masukan baris matriks: ");
-        int row = read.nextInt();  // nextInt = method dr Scanner buat ngebaca integer
+        int row = 0, col = 0;
+        if (read.hasNext()){
+            row = read.nextInt();  // nextInt = method dr Scanner buat ngebaca integer
+        }
         System.out.print("Masukan kolom matriks: ");
-        int col = read.nextInt();
+        if (read.hasNext()){
+            col = read.nextInt();  // nextInt = method dr Scanner buat ngebaca integer
+        }
         double[][] mat = new double[row][col]; // assign ukuran array
         for (int i = 0; i < row; i++){
             for (int j = 0; j < col; j++){
@@ -13,11 +24,9 @@ public class IOKeyboard{
                 mat[i][j] = read.nextDouble();
             }
         }
-        read.close();
         return mat;
     }
-    public static double[][] readMatrixSPL(){
-        Scanner read = new Scanner(System.in); // buat obj read dari Scanner class
+    public static double[][] readMatrixSPL(Scanner read){
         System.out.print("Masukan baris matriks: ");
         int row = read.nextInt();  // nextInt = method dr Scanner buat ngebaca integer
         System.out.print("Masukan kolom matriks: ");
@@ -35,7 +44,6 @@ public class IOKeyboard{
                 }
             }
         }
-        read.close();
         return mat;
     }
     static void printMatrix(double[][] mat){
