@@ -100,4 +100,20 @@ public class MatrixOp {
         }
         return zeroCol;
     }
+
+    static double[][] matrixTimes(double[][] m1, double[][] m2){
+
+        double[][] mr = new double[getRow(m1)][getCol(m2)]; 
+
+        for (int i = 0; i < getRow(m2); i++){
+            for (int j = 0; j < getCol(m2); j++){
+                for(int k = 0; k < getRow(m2); k++){
+                    mr[i][j] += m1[i][k] * m2[k][j];
+                }
+            }
+        }
+
+        return mr;
+
+    }
 }
