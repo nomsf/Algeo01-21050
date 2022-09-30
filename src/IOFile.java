@@ -107,7 +107,7 @@ public class IOFile{
         }
     }
 
-    public static void writeRegresi (String fileName, double[][] res, double restaksir){
+    public static void writeRegresi(String fileName, double[][] res, double restaksir){
         int row = res.length;
         int col = res[0].length;
         try {
@@ -122,6 +122,21 @@ public class IOFile{
             myWriter.write("\n");
             myWriter.write("Hasil Taksiran:\n");
             myWriter.write(restaksir + "\n");
+            myWriter.write("\n");
+            myWriter.close();
+            System.out.println("Berhasil menuliskan pada " + fileName);
+            } catch (IOException e) {
+                System.out.println("Error!");
+            }
+    }
+
+    public static void writeSolGauss(String fileName, String[] res){
+        try {
+            FileWriter myWriter = new FileWriter(fileName);
+            myWriter.write("Solusi SPL:\n");
+            for (int i = 0; i < res.length; i++) {
+                myWriter.write(res[i] + "\n");
+            }
             myWriter.write("\n");
             myWriter.close();
             System.out.println("Berhasil menuliskan pada " + fileName);

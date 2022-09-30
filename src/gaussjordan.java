@@ -66,17 +66,23 @@ public class gaussjordan{
         return mat;
     }
     /* Kelompok SPL Solver */
-    public static void splsolverprint(double[][] mat){
+    public static String[] splsolver(double[][] mat){
         int row = mat.length;
         int col = mat[0].length;
         if(isnosol(mat) || row > col - 1){
+            String[] res = {"SPL tidak memiliki solusi"};
             System.out.println("SPL tidak memiliki solusi");
+            return res;
         }
         else if(row == col - 1 && !manysol(mat)){
-            MatrixOp.displayStrArr(uniqsolver(mat));
+            String[] res = uniqsolver(mat);
+            MatrixOp.displayStrArr(res);
+            return res;
         }
         else{
-            MatrixOp.displayStrArr(paramsolver(mat));
+            String[] res = paramsolver(mat);
+            MatrixOp.displayStrArr(res);
+            return res;
         }
     }
     public static boolean isnosol(double[][] mat){
@@ -197,18 +203,22 @@ public class gaussjordan{
         int opt = IOKeyboard.InputOption(read);
         if(opt == 1){
             double[][] mat = IOKeyboard.readMatrixSPL(read);
-            splsolverprint(gaussel(mat));
+            splsolver(gaussel(mat));
         }
         else if(opt == 2){
             String fileName = IOFile.InputFileName(read);
             int row = IOFile.RowCounter(fileName);
-            System.out.println(row);
             int col = IOFile.ColCounter(fileName);
-            System.out.println(col);
             double[][] mat = IOFile.readFile(fileName, row, col);
-            splsolverprint(gaussel(mat));
-            int i = IOKeyboard.WritetoFileOption(read);
-            //if()
+            String res[] = splsolver(gaussel(mat));
+            int optw = IOKeyboard.WritetoFileOption(read);
+            if(optw == 1){
+                String fileName_write = IOFile.InputFileName(read);
+                boolean iswritesc = IOFile.createFile(fileName_write);
+                if(iswritesc){
+                    IOFile.writeSolGauss(fileName_write, res);
+                }
+            }
         }
         read.close();
     }
