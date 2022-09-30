@@ -2,13 +2,13 @@ import java.util.Scanner;
 
 public class SplCramer{
 
-    static void solveCramer(double[][] m){
+    static void solveCramer(double[][] m, Scanner read){
 
         int mrow = MatrixOp.getRow(m), mcol = MatrixOp.getCol(m);
 
         int k = 0, l = 0;
 
-        double[][] mA = new double[mrow][mrow];
+        double[][] mA = new double[mrow][mcol-1];
         double[][] mB = new double[mrow][1]; 
         double[][] mtemp = new double[mrow][mrow];
 
@@ -30,32 +30,77 @@ public class SplCramer{
 
         // solve
 
-        double det = Cofactor.determinantKofaktor(mA);
-        double dettemp;
+        if(!MatrixOp.isSquare(mA)){
+            System.out.println("-----  Matriks A Tidak Berbentuk Square!  -----");
+        }
 
-        int marow = MatrixOp.getRow(mA);
-        int macol = MatrixOp.getCol(mA);
+        else if (Cofactor.determinantKofaktor(mA) == 0){
+            System.out.println("-----  Matriks Tidak Mempunyai Balikan!  -----");
+        }
 
-        for (int count = 0; count < macol ; count++){
-            for (int i = 0; i < marow; i++ ){
-                for (int j = 0; j < macol; j++){
+        else{
 
-                    if( j == count ){
-                        mtemp[i][j] = mB[i][0];
+            double det = Cofactor.determinantKofaktor(mA);
+            double dettemp;
+
+            int marow = MatrixOp.getRow(mA);
+            int macol = MatrixOp.getCol(mA);
+
+            String rlist = "";
+
+            for (int count = 0; count < macol ; count++){
+                for (int i = 0; i < marow; i++ ){
+                    for (int j = 0; j < macol; j++){
+
+                        if( j == count ){
+                            mtemp[i][j] = mB[i][0];
+                        }
+                        else{
+                            mtemp[i][j] = mA[i][j];
+                        }
+
                     }
-                    else{
-                        mtemp[i][j] = mA[i][j];
-                    }
-
                 }
+
+                dettemp = Cofactor.determinantKofaktor(mtemp);
+
+                rlist += "X" + String.valueOf(count+1) + " = " + (String.valueOf(dettemp/det) + "   ");
             }
 
-            dettemp = Cofactor.determinantKofaktor(mtemp);
+            System.out.println(rlist);
 
-            System.out.println("x" + count + " = " + (dettemp/det));
+            int opt = IOKeyboard.WritetoFileOption(read);
+
+            if(opt == 1){
+                String fname = IOFile.InputFileName(read);
+                IOFile.writeFile_1(fname, rlist);
+            }
+
         }
-        
 
+    }
+
+    public static void splcramerDriver(Scanner read){
+
+        double[][] m;
+        String file;
+
+        
+        int opt = IOKeyboard.InputOption(read);
+        
+        if(opt == 1){
+            m = IOKeyboard.readMatrixSPL(read);            
+        }
+            
+        else{
+            file = IOFile.InputFileName(read);
+            int row = IOFile.RowCounter(file);
+            int col = IOFile.ColCounter(file);
+
+            m = IOFile.readFile(file, row, col); 
+        }
+
+        solveCramer(m, read);
 
 
     }
@@ -65,9 +110,7 @@ public class SplCramer{
 
         Scanner read = new Scanner(System.in);
 
-        double[][] m = IOKeyboard.readMatrix(read);
-
-        solveCramer(m);
+        splcramerDriver(read);
 
     }
 

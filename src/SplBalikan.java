@@ -29,8 +29,8 @@ public class SplBalikan {
             k++;
         } 
 
-        IOKeyboard.printMatrix(mA);
-        IOKeyboard.printMatrix(mB);
+        // IOKeyboard.printMatrix(mA);
+        // IOKeyboard.printMatrix(mB);
 
 
         if(!MatrixOp.isSquare(mA)){
@@ -55,17 +55,12 @@ public class SplBalikan {
             }
             System.out.println(listr);
 
-            System.out.println("-----  Apakah ingin menyimpan jawaban ke dalam file?  -----");
-            System.out.println("       1. Yes");
-            System.out.println("       1. No");
+            int opt = IOKeyboard.WritetoFileOption(read);
 
-            int opt = IOKeyboard.IN
-
-            if(opt == "y"){
+            if(opt == 1){
                 String fname = IOFile.InputFileName(read);
                 IOFile.writeFile_1(fname, listr);
             }
-            
 
         }
     }
