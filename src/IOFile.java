@@ -1,4 +1,7 @@
-//Belum Bener :(
+/*          String fileName = IOFile.InputFileName(read);
+            int row = IOFile.RowCounter(fileName);
+            int col = IOFile.ColCounter(fileName);
+            double[][] mat = IOFile.readFile(fileName, row, col);*/
 import java.io.*;
 import java.util.*;
 public class IOFile{
