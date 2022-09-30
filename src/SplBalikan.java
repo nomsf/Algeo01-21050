@@ -45,8 +45,8 @@ public class SplBalikan {
     }
 
     public static void main(String[] args){
-        double[][] m = IOKeyboard.readMatrix();
+        // double[][] m = IOKeyboard.readMatrix();
 
-        splInverse(m);
+        // splInverse(m);
     }
 }

@@ -7,6 +7,7 @@ public class IOKeyboard{
         int i = read.nextInt();
         return i;
     }
+
     public static double[][] readMatrix(Scanner read){
         System.out.print("Masukan baris matriks: ");
         int row = 0, col = 0;
@@ -26,6 +27,7 @@ public class IOKeyboard{
         }
         return mat;
     }
+    
     public static double[][] readMatrixSPL(Scanner read){
         System.out.print("Masukan baris matriks: ");
         int row = read.nextInt();  // nextInt = method dr Scanner buat ngebaca integer

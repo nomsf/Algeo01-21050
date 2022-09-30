@@ -106,11 +106,11 @@ public class DeterminantReduction {
 
         public static void main(String[] args) {
 
-            double[][] mat = IOKeyboard.readMatrix();
+    //         double[][] mat = IOKeyboard.readMatrix();
             
-            IOKeyboard.printMatrix(mat); 
+    //         IOKeyboard.printMatrix(mat); 
             
 
-            System.out.println(determinanUt(mat));
-    }
+    //         System.out.println(determinanUt(mat));
+     }
 }
