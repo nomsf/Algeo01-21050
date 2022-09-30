@@ -122,7 +122,7 @@ public class Proto {
 
 
 
-        public static void main(String[] args) {
+    public static void main(String[] args) {
 
             double[][] mat = readMatrix();
             

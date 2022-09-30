@@ -1,3 +1,5 @@
+import java.util.Scanner;
+import java.util.Random;
 
 public class InverseAdjoin {
 
@@ -15,11 +17,20 @@ public class InverseAdjoin {
     }
 
     public static void main(String[] args){
-        double[][] m;
+        double[][] m = new double[15][15];
+        Random rand = new Random();
+        Scanner read = new Scanner(System.in);
 
-        m = IOKeyboard.readMatrix();
+        for (int i = 0; i < 15; i++){
+            for (int j = 0; j < 15; j++){
+                m[i][j] = rand.nextInt(15);
+            }
+        }
+
 
         IOKeyboard.printMatrix(m);
+
+        System.out.println("hasil inverse: ");
 
         IOKeyboard.printMatrix(inverseAdjoin(m));
     }
