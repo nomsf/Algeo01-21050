@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class gauss{
     /* Gauss Elimination */
     public static double[][] gaussel(double[][] mat){
@@ -186,14 +187,14 @@ public class gauss{
             double[][] mat = IOKeyboard.readMatrixSPL(read);
             splsolverprint(gaussel(mat));
         }
-        else{
+        /*else{
             String fileName = IOFile.InputFileName();
             int row = IOFile.RowCounter(fileName);
             int col = IOFile.ColCounter(fileName);
             double[][] mat = IOFile.readFile(fileName, row, col);
             splsolverprint(gaussel(mat));
         }
-        read.close();
+        read.close();*/
     }
     public static void main(String[] args) {
         gaussdriver();
