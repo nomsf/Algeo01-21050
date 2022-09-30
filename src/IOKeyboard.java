@@ -7,6 +7,12 @@ public class IOKeyboard{
         return i;
     }
 
+    public static int WritetoFileOption(Scanner read){
+        Menu.menuWritetoFile();
+        int i = read.nextInt();
+        return i;
+    }
+
     public static double[][] readMatrix(Scanner read){
         System.out.print("Masukan baris matriks: ");
         int row = 0, col = 0;
@@ -25,6 +31,16 @@ public class IOKeyboard{
             }
         }
         return mat;
+    }
+
+    public static double[] readArrTaksir(Scanner read, int n){
+        System.out.println("Masukan data yang ingin ditaksir: ");
+        double[] xtaksir = new double[n]; // assign ukuran array
+        for (int i = 0; i < n; i++){
+            System.out.print("Masukan data x" + (i + 1) +": ");
+            xtaksir[i] = read.nextDouble();
+        }
+        return xtaksir;
     }
     
     public static double[][] readMatrixSPL(Scanner read){

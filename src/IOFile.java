@@ -114,4 +114,42 @@ public class IOFile{
         
         
     }
+
+    public static void writeRegresi(String fileName, double[][] res, double restaksir){
+        int row = res.length;
+        int col = res[0].length;
+        try {
+            FileWriter myWriter = new FileWriter(fileName);
+            myWriter.write("Persamaan regresi:\n");
+            if(res[0][col - 1] != 0) myWriter.write("y = " + res[0][col - 1] + " ");
+            for (int i = 1; i < row; i++) {
+                if(res[i][col - 1] != 0){
+                    myWriter.write(" + (" + res[i][col - 1] + ")" + "x" + i + " ");
+                }
+            }
+            myWriter.write("\n");
+            myWriter.write("Hasil Taksiran:\n");
+            myWriter.write(restaksir + "\n");
+            myWriter.write("\n");
+            myWriter.close();
+            System.out.println("Berhasil menuliskan pada " + fileName);
+            } catch (IOException e) {
+                System.out.println("Error!");
+            }
+    }
+
+    public static void writeSolGauss(String fileName, String[] res){
+        try {
+            FileWriter myWriter = new FileWriter(fileName);
+            myWriter.write("Solusi SPL:\n");
+            for (int i = 0; i < res.length; i++) {
+                myWriter.write(res[i] + "\n");
+            }
+            myWriter.write("\n");
+            myWriter.close();
+            System.out.println("Berhasil menuliskan pada " + fileName);
+            } catch (IOException e) {
+                System.out.println("Error!");
+            }
+    }
 }

@@ -32,37 +32,64 @@ public class regresi{
         if(res[0][col - 1] != 0) System.out.printf("y = %f", res[0][col - 1]);
         for (int i = 1; i < row; i++) {
             if(res[i][col - 1] == 0) continue;
-            System.out.printf(" + (%f) x%d", res[i][col - 1], i);
+            System.out.printf(" + (%f)x%d", res[i][col - 1], i);
         }
         System.out.println();
     }
-    public static void taksir(double[] vartaksir, double[][] res){
+    public static double taksir(double[] xtaksir, double[][] res){
         int row = res.length;
         int col = res[0].length;
         double result = res[0][col - 1];
         for (int i = 0; i < row - 1; i++) {
-            result += res[i + 1][col - 1] * vartaksir[i];
+            result += res[i + 1][col - 1] * xtaksir[i];
         }
-        System.out.println(result);
+        System.out.printf("y = %f", result);
+        System.out.println();
+        return result;
     }
     /* Driver */
     public static void regresidriver() {
         Scanner read = new Scanner(System.in);
         int opt = IOKeyboard.InputOption(read);
-        if(opt == 2){
+        if(opt == 1){
             double[][] mat = IOKeyboard.readMatrixRegresi(read);
-            printpers(regresisolver(mat));
+            double[][] res = regresisolver(mat);
+            printpers(res);
+            double[] xtaksir = IOKeyboard.readArrTaksir(read, res.length - 1);
+            taksir(xtaksir, res);
         }
-        /*else{
-            String fileName = IOFile.InputFileName();
+        else{
+            String fileName = IOFile.InputFileName(read);
             int row = IOFile.RowCounter(fileName);
             int col = IOFile.ColCounter(fileName);
-            double[][] mat = IOFile.readFile(fileName, row, col);
-            splsolverprint(gaussel(mat));
-        }*/
+            /* interpretasi penulisan xk pada baris terakhir mulai kolom pertama sampai kolom -1, 
+            dengan kolom terakhir berisi integer -1 yg tidak dibaca */
+            double[][] matandtaksir = IOFile.readFile(fileName, row, col); 
+            double[][] mat = new double[row - 1][col];
+            for(int i = 0; i < row - 1; i++){
+                for(int j = 0; j < col; j++){
+                    mat[i][j] = matandtaksir[i][j];
+                }
+            }
+            double[] xtaksir = new double[col - 1];
+            for(int i = 0; i < col - 1; i++){
+                xtaksir[i] = matandtaksir[row - 1][i];
+            }
+            double[][] res = regresisolver(mat);
+            printpers(res);
+            double restaksir = taksir(xtaksir, res);
+            int optw = IOKeyboard.WritetoFileOption(read);
+            if(optw == 1){
+                String fileName_write = IOFile.InputFileName(read);
+                boolean iswritesc = IOFile.createFile(fileName_write);
+                if(iswritesc){
+                    IOFile.writeRegresi(fileName_write, res, restaksir);
+                }
+            }
+        }
         read.close();
     }
-    public static void main(String[] args) {
+    public static void main(String[] args){
         regresidriver();
     }
 }

@@ -49,6 +49,12 @@ public class Menu{
         System.out.println("  1. Input Keyboard");
         System.out.println("  2. Input File");
     }
+    public static void menuWritetoFile(){
+        System.out.println("-----  INGIN MENYIMPAN HASIL KE FILE?  -----");
+        System.out.println("");
+        System.out.println("  1. ya");
+        System.out.println("  2. tidak");
+    }
 
 
     public static int input(Scanner read){
