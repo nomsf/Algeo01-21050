@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.Scanner;
 
 public class gaussjordan{
@@ -199,14 +201,17 @@ public class gaussjordan{
             double[][] mat = IOKeyboard.readMatrixSPL(read);
             splsolverprint(gaussel(mat));
         }
-        /*else{
+        else{
             String fileName = IOFile.InputFileName(read);
             int row = IOFile.RowCounter(fileName);
+            System.out.println(row);
             int col = IOFile.ColCounter(fileName);
+            System.out.println(col);
             double[][] mat = IOFile.readFile(fileName, row, col);
+            IOKeyboard.printMatrix(mat);
             splsolverprint(gaussel(mat));
         }
-        read.close();*/
+        read.close();
     }
     public static void main(String[] args) {
         gaussjordandriver();
