@@ -1,10 +1,12 @@
 //Belum Bener :(
 import java.io.*;
 import java.util.*;
+
+
 public class IOFile{
 
     public static String InputFileName(Scanner read){
-        System.out.print("Masukan nama file: ");
+        System.out.print("Masukan nama file tanpa extension: ");
         String fileName = "../test/";
         fileName += read.next();
         fileName += ".txt";
@@ -64,6 +66,41 @@ public class IOFile{
                 }
             }
             return mat;
+        }
+    }
+
+    public static boolean createFile(String filename){
+        // return true kalo filenya berhasil di buat
+        // false kalo udh ada file yg namanya sama
+
+        File file = new File(filename);
+        boolean saved = false;
+        try{
+            if(file.createNewFile()){
+                System.out.println(" File telah dibuat.");
+                saved = true;
+            }
+            else{
+                System.out.println("Sudah ada file dengan nama yang sama. ");
+                saved = false;
+            }
+        } catch(IOException x){
+            System.out.println("Error dalam membuat file. ");
+            x.printStackTrace();
+        }
+        
+        return saved;
+
+    }
+
+    public static void writeFile_1(Scanner read){
+        // skema write file yang naufal pake
+
+        System.out.println("Apakah ingin menyimpan hasil ke dalam file? (y/n)");
+        String input = read.nextLine();
+
+        if(input == "y"){
+            
         }
     }
 }

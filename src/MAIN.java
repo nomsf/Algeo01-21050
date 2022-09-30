@@ -85,8 +85,19 @@ public class MAIN extends Menu{
                     System.out.println("-----  Masukan salah!  -----")
                     break;
             }
+
+            System.out.println("-----  Apakah ingin melanjutkan perhitungan lain? (y/n)  -----")
+            char opt = read.nextLine();
+
+            if ( opt == "y"){
+                exit = false;
+            }
+            else{
+                exit == true;
+            }
         }
         
+        System.out.println("-----  TERIMAKASIH  -----")
 
     }
 

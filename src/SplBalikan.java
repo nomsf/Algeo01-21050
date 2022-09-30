@@ -10,7 +10,7 @@ public class SplBalikan {
         int k = 0, l = 0;
 
 
-        double[][] mA = new double[mrow][mrow];
+        double[][] mA = new double[mrow][mcol-1];
         double[][] mB = new double[mrow][1];
 
         for (int i = 0; i < mrow; i++ ){// buat split matrixnya jadi matrix a dan b
@@ -32,24 +32,63 @@ public class SplBalikan {
         IOKeyboard.printMatrix(mA);
         IOKeyboard.printMatrix(mB);
 
-        double[][] minv = InverseGauss.inverseGauss(mA);
 
-        IOKeyboard.printMatrix(minv);
-
-        double[][] result = MatrixOp.matrixTimes(minv, mB);
-        
-        for(int i = 0; i < MatrixOp.getRow(result); i++){
-            System.out.println("X" + (i+1) + "= " + result[i][0]);
+        if(!MatrixOp.isSquare(mA)){
+            System.out.println("-----  Matriks A Tidak Berbentuk Square!  -----");
         }
+
+        else if (Cofactor.determinantKofaktor(mA) == 0){
+            System.out.println("-----  Matriks Tidak Mempunyai Balikan!  -----");
+        }
+
+        else{
+            double[][] minv = InverseGauss.inverseGauss(mA);
+            
+            IOKeyboard.printMatrix(minv);
+
+            double[][] result = MatrixOp.matrixTimes(minv, mB);
+            String[] listr = new String[MatrixOp.getRow(result)];
+
+            for(int i = 0; i < MatrixOp.getRow(result); i++){
+                listr[i] = "X" +(String.valueOf(i+1)) + " = " + (String.valueOf(result[i][0]));
+                System.out.println(listr[i]);
+            }
+
+        }
+
+        
+    }
+
+    public static void splbalikanDriver(Scanner read){
+        
+    
+        double[][] m;
+        String file;
+
+        
+        int opt = IOKeyboard.InputOption(read);
+        
+        if(opt == 1){
+            m = IOKeyboard.readMatrixSPL(read);            
+        }
+            
+        else{
+            file = IOFile.InputFileName(read);
+            int row = IOFile.RowCounter(file);
+            int col = IOFile.ColCounter(file);
+
+            m = IOFile.readFile(file, row, col); 
+        }
+        splInverse(m);
+
+
     }
 
     public static void main(String[] args){
-        // double[][] m = IOKeyboard.readMatrix();
+
         Scanner read = new Scanner(System.in);
 
-        double[][] m = IOKeyboard.readMatrix(read);
+        splbalikanDriver(read);
 
-        splInverse(m);
-        // splInverse(m);
     }
 }
