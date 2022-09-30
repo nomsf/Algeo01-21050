@@ -1,5 +1,6 @@
 import java.util.Scanner; 
 public class IOKeyboard{
+    
     public static int InputOption(Scanner read){
         Menu.menuInput();
         int i = read.nextInt();

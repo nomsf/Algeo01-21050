@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class SplBalikan {
     
-    static void splInverse(double[][] m){
+    static void splInverse(double[][] m, Scanner read){
         int mrow = MatrixOp.getRow(m);
         int mcol = MatrixOp.getCol(m);
 
@@ -47,16 +47,27 @@ public class SplBalikan {
             IOKeyboard.printMatrix(minv);
 
             double[][] result = MatrixOp.matrixTimes(minv, mB);
-            String[] listr = new String[MatrixOp.getRow(result)];
+            String listr = "";
 
             for(int i = 0; i < MatrixOp.getRow(result); i++){
-                listr[i] = "X" +(String.valueOf(i+1)) + " = " + (String.valueOf(result[i][0]));
-                System.out.println(listr[i]);
+                listr += "X" +(String.valueOf(i+1)) + " = " + (String.valueOf(result[i][0] + "   "));
+                
             }
+            System.out.println(listr);
+
+            System.out.println("-----  Apakah ingin menyimpan jawaban ke dalam file?  -----");
+            System.out.println("       1. Yes");
+            System.out.println("       1. No");
+
+            int opt = IOKeyboard.IN
+
+            if(opt == "y"){
+                String fname = IOFile.InputFileName(read);
+                IOFile.writeFile_1(fname, listr);
+            }
+            
 
         }
-
-        
     }
 
     public static void splbalikanDriver(Scanner read){
@@ -79,7 +90,7 @@ public class SplBalikan {
 
             m = IOFile.readFile(file, row, col); 
         }
-        splInverse(m);
+        splInverse(m, read);
 
 
     }

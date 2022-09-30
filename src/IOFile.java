@@ -96,14 +96,22 @@ public class IOFile{
 
     }
 
-    public static void writeFile_1(Scanner read){
+    public static void writeFile_1(String filename, String val){
         // skema write file yang naufal pake
 
-        System.out.println("Apakah ingin menyimpan hasil ke dalam file? (y/n)");
-        String input = read.nextLine();
+        try{
+            FileWriter write = new FileWriter(filename);
+            write.write(val);
+            write.close();
+            System.out.println("-----  Jawaban sudah tersimpan  -----");
 
-        if(input == "y"){
-            
         }
+        catch(IOException x){
+            System.out.println("Error dalam menyimpan jawaban. ");
+            x.printStackTrace();
+        }
+        
+        
+        
     }
 }
