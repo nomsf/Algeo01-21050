@@ -1,9 +1,7 @@
 import java.util.Scanner; 
 public class IOKeyboard{
     public static int InputOption(Scanner read){
-        System.out.println("Pilih masukan melalui:");
-        System.out.println("1. File");
-        System.out.println("2. Keyboard");
+        Menu.menuInput();
         int i = read.nextInt();
         return i;
     }
