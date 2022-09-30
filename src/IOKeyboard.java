@@ -48,6 +48,26 @@ public class IOKeyboard{
         }
         return mat;
     }
+    public static double[][] readMatrixRegresi(Scanner read){
+        System.out.print("Masukan jumlah peubah: ");
+        int col = read.nextInt();  // nextInt = method dr Scanner buat ngebaca integer
+        System.out.print("Masukan jumlah sampel: ");
+        int row = read.nextInt();
+        double[][] mat = new double[row][col + 1]; // assign ukuran array
+        for (int i = 0; i < row; i++){
+            for (int j = 0; j < col + 1; j++){
+                if(j == col){
+                    System.out.print("Masukan nilai y sampel ke-" + (i + 1) + ": ");
+                    mat[i][j] = read.nextDouble();
+                }
+                else{
+                    System.out.print("Masukan nilai x" + (j + 1) +" sampel ke-" + (i + 1) + ": ");
+                    mat[i][j] = read.nextDouble();
+                }
+            }
+        }
+        return mat;
+    }
     static void printMatrix(double[][] mat){
         int ROW = MatrixOp.getRow(mat);
         int COL = MatrixOp.getCol(mat);

@@ -2,14 +2,12 @@
 import java.io.*;
 import java.util.*;
 public class IOFile{
-    public static String InputFileName(){
-        Scanner read = new Scanner(System.in);
+    public static String InputFileName(Scanner read){
         System.out.print("Masukan nama file: ");
         String fileName = read.nextLine();
-        read.close();
         return fileName;
     }
-    public static int RowCounter(String fileName){
+    public static int RowCounter(String fileName, Scanner read){
         FileReader fr = null;
         try{
             fr = new FileReader(fileName);
