@@ -1,5 +1,5 @@
 
-
+import java.util.Scanner;
 
 
 public class Menu{
@@ -48,5 +48,14 @@ public class Menu{
         System.out.println("");
         System.out.println("  1. Input Keyboard");
         System.out.println("  2. Input File");
+    }
+
+
+    public static int input(Scanner read){
+
+        System.out.print("Masukan pilihan anda: ");
+        int x = read.nextInt();
+
+        return x;
     }
 }   
