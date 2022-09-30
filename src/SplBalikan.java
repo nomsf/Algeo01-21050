@@ -1,3 +1,6 @@
+import java.util.Scanner;
+
+
 public class SplBalikan {
     
     static void splInverse(double[][] m){
@@ -38,15 +41,15 @@ public class SplBalikan {
         for(int i = 0; i < MatrixOp.getRow(result); i++){
             System.out.println("X" + (i+1) + "= " + result[i][0]);
         }
-        
-        
-        
-
     }
 
     public static void main(String[] args){
         // double[][] m = IOKeyboard.readMatrix();
+        Scanner read = new Scanner(System.in);
 
+        double[][] m = IOKeyboard.readMatrix(read);
+
+        splInverse(m);
         // splInverse(m);
     }
 }

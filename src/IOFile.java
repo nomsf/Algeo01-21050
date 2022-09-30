@@ -2,6 +2,7 @@
 import java.io.*;
 import java.util.*;
 public class IOFile{
+
     public static String InputFileName(Scanner read){
         System.out.print("Masukan nama file: ");
         String fileName = read.nextLine();
@@ -23,6 +24,8 @@ public class IOFile{
         rowScanner.close();
         return rowCount;
     }
+
+    
     public static int ColCounter(String fileName){
         FileReader fr = null;
         try{
