@@ -13,7 +13,7 @@ Pembagian Tugas:
 - [x] Pembagian Tugas
 - [x] SPL_Metode Eliminasi Gauss
 - [x] SPL_Metode Eliminasi Gauss Jordan
-- [ ] SPL_Matriks Balikan
+- [x] SPL_Matriks Balikan
 - [ ] SPL_Kaidah Cramer
 - [x] Determinan
 - [x] Matriks Balikan
