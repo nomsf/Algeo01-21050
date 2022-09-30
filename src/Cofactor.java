@@ -61,12 +61,12 @@ public class Cofactor extends Proto{
     }
 
     public static void main(String[] args) {
-        double[][] m;
+        // double[][] m;
         
-        m = IOKeyboard.readMatrix();
+        // m = IOKeyboard.readMatrix();
 
-        IOKeyboard.printMatrix(m);
+        // IOKeyboard.printMatrix(m);
 
-        IOKeyboard.printMatrix(matrixCofactor(m));
+        // IOKeyboard.printMatrix(matrixCofactor(m));
     }
 }
