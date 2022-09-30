@@ -117,4 +117,8 @@ public class MatrixOp {
 
     }
 
+    static boolean isSquare(double[][] m){
+        return (getRow(m) == getCol(m));
+    }
+
 }

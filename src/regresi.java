@@ -32,7 +32,7 @@ public class regresi{
         if(res[0][col - 1] != 0) System.out.printf("y = %f", res[0][col - 1]);
         for (int i = 1; i < row; i++) {
             if(res[i][col - 1] == 0) continue;
-            System.out.printf(" + (%f) x%d", res[i][col - 1], i);
+            System.out.printf(" + (%f)x%d", res[i][col - 1], i);
         }
         System.out.println();
     }
@@ -81,7 +81,10 @@ public class regresi{
             int optw = IOKeyboard.WritetoFileOption(read);
             if(optw == 1){
                 String fileName_write = IOFile.InputFileName(read);
-                IOFile.createFile()
+                boolean iswritesc = IOFile.createFile(fileName_write);
+                if(iswritesc){
+                    IOFile.writeRegresi(fileName_write, res, restaksir);
+                }
             }
         }
         read.close();

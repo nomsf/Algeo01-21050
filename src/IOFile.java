@@ -4,10 +4,12 @@
             double[][] mat = IOFile.readFile(fileName, row, col);*/
 import java.io.*;
 import java.util.*;
+
+
 public class IOFile{
 
     public static String InputFileName(Scanner read){
-        System.out.print("Masukan nama file: ");
+        System.out.print("Masukan nama file tanpa extension: ");
         String fileName = "../test/";
         fileName += read.next();
         fileName += ".txt";
@@ -68,5 +70,63 @@ public class IOFile{
             }
             return mat;
         }
+    }
+
+    public static boolean createFile(String filename){
+        // return true kalo filenya berhasil di buat
+        // false kalo udh ada file yg namanya sama
+
+        File file = new File(filename);
+        boolean saved = false;
+        try{
+            if(file.createNewFile()){
+                System.out.println(" File telah dibuat.");
+                saved = true;
+            }
+            else{
+                System.out.println("Sudah ada file dengan nama yang sama. ");
+                saved = false;
+            }
+        } catch(IOException x){
+            System.out.println("Error dalam membuat file. ");
+            x.printStackTrace();
+        }
+        
+        return saved;
+
+    }
+
+    public static void writeFile_1(Scanner read){
+        // skema write file yang naufal pake
+
+        System.out.println("Apakah ingin menyimpan hasil ke dalam file? (y/n)");
+        String input = read.nextLine();
+
+        if(input == "y"){
+            
+        }
+    }
+
+    public static void writeRegresi (String fileName, double[][] res, double restaksir){
+        int row = res.length;
+        int col = res[0].length;
+        try {
+            FileWriter myWriter = new FileWriter(fileName);
+            myWriter.write("Persamaan regresi:\n");
+            if(res[0][col - 1] != 0) myWriter.write("y = " + res[0][col - 1] + " ");
+            for (int i = 1; i < row; i++) {
+                if(res[i][col - 1] != 0){
+                    myWriter.write(" + (" + res[i][col - 1] + ")" + "x" + i + " ");
+                }
+            }
+            myWriter.write("\n");
+            myWriter.write("Hasil Taksiran:\n");
+            myWriter.write(restaksir + "\n");
+            myWriter.write("\n");
+            myWriter.close();
+            System.out.println("Berhasil menuliskan pada " + fileName);
+            } catch (IOException e) {
+                System.out.println("Error!");
+            }
     }
 }

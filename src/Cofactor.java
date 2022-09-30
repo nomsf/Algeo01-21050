@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Cofactor extends Proto{
 
     static double[][] minorEntry(double[][] m, int a, int b){
@@ -61,12 +63,14 @@ public class Cofactor extends Proto{
     }
 
     public static void main(String[] args) {
-        // double[][] m;
+        double[][] m;
+
+        Scanner read = new Scanner(System.in);
         
-        // m = IOKeyboard.readMatrix();
+        m = IOKeyboard.readMatrix(read);
 
-        // IOKeyboard.printMatrix(m);
+        IOKeyboard.printMatrix(m);
 
-        // IOKeyboard.printMatrix(matrixCofactor(m));
+        System.out.println(determinantKofaktor(m));
     }
 }

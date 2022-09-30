@@ -208,7 +208,7 @@ public class gaussjordan{
             double[][] mat = IOFile.readFile(fileName, row, col);
             splsolverprint(gaussel(mat));
             int i = IOKeyboard.WritetoFileOption(read);
-            if()
+            //if()
         }
         read.close();
     }
