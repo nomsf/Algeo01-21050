@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class InverseAdjoin {
 
-    static double[][] inverseAdjoin(double[][] m){
+    public static double[][] inverseAdjoin(double[][] m){
         // menghasilkan inverse dari matriks dengan metode adjoin
         double[][] ma;
 

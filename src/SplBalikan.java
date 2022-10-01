@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class SplBalikan {
     
-    static void splInverse(double[][] m, Scanner read){
+    public static void splInverse(double[][] m, Scanner read){
         int mrow = MatrixOp.getRow(m);
         int mcol = MatrixOp.getCol(m);
 

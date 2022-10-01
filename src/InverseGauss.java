@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class InverseGauss {
     
 
-    static double[][] createIdentity(int row, int col){
+    public static double[][] createIdentity(int row, int col){
         
         double[][] mi = new double[row][col];
 
@@ -22,7 +22,7 @@ public class InverseGauss {
     }
 
 
-    static double[][] addIdentity(double[][] m){
+    public static double[][] addIdentity(double[][] m){
         int k = 0, l = 0;
         double[][] mc = new double[MatrixOp.getRow(m)][MatrixOp.getCol(m) * 2];
         double[][] mi = createIdentity(MatrixOp.getRow(m), MatrixOp.getCol(m));
@@ -53,12 +53,12 @@ public class InverseGauss {
         return mc;
     }
 
-    static void gaussJordan(double[][] m){
+    public static void gaussJordan(double[][] m){
 
         m = gaussjordan.gaussel(m);
     }
 
-    static double[][] inverseGauss(double[][] m){
+    public static double[][] inverseGauss(double[][] m){
         int k = 0, l = 0;
         double[][] mr = addIdentity(m);
         gaussJordan(mr);

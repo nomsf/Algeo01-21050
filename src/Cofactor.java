@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
-public class Cofactor extends Proto{
+public class Cofactor {
 
-    static double[][] minorEntry(double[][] m, int a, int b){
+    public static double[][] minorEntry(double[][] m, int a, int b){
         double[][] me = new double[MatrixOp.getRow(m)-1][MatrixOp.getRow(m)-1];
         int x = 0, y = 0;
 
@@ -24,7 +24,7 @@ public class Cofactor extends Proto{
         return me;
     } 
 
-    static double[][] matrixCofactor(double[][] m){
+    public static double[][] matrixCofactor(double[][] m){
         // menghasilkan matriks kofaktor
         double[][] mc = new double[MatrixOp.getRow(m)][MatrixOp.getRow(m)];
         int p = 1;
@@ -38,7 +38,7 @@ public class Cofactor extends Proto{
         return mc;
     }
 
-    static double determinantKofaktor(double[][] m){
+    public static double determinantKofaktor(double[][] m){
         double det = 0;
         int p = 1;
         double[][] me;

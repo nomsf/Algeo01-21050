@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class SplCramer{
 
-    static void solveCramer(double[][] m, Scanner read){
+    public static void solveCramer(double[][] m, Scanner read){
 
         int mrow = MatrixOp.getRow(m), mcol = MatrixOp.getCol(m);
 

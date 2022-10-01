@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class DeterminantReduction {
 
 
-    static int correctionPos(double[][] m){
+    public static int correctionPos(double[][] m){
         // tuker tuker baris biar valid pas dimasukin ke determinanUt
         // juga menghasilkan konstanta p untuk nentuin pos/neg determinant nya
         int n = MatrixOp.getRow(m);
@@ -40,7 +40,7 @@ public class DeterminantReduction {
     }
 
 
-    static double determinanUt(double[][] m){
+    public static double determinanUt(double[][] m){
         // hitung determinan dengan metode upper triangle.
         // ERROR : Kalau mat[0][0] / mat[1][1] = 0 hasilnya salah.
         double det = 1;
