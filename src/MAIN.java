@@ -74,7 +74,8 @@ public class MAIN extends Menu{
                     }
                     break;
 
-                case 4: // interpolasi polinom
+                case 4: 
+                    Interpolasipolinom.Interpolasipolinomdriver(read);// interpolasi polinom
                     break;
                       
                 case 5: // interpolasi bicubic

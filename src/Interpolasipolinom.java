@@ -148,12 +148,11 @@ public class Interpolasipolinom{
         }
         if(input==2)
         { 
-             
-            String namefile=IOFile.InputFileName(read);
-            int nR = IOFile.RowCounter(namefile);
-            int nC = IOFile.ColCounter(namefile); 
+            String fileName = IOFile.InputFileName(read);
+            int row = IOFile.RowCounter(fileName);
+            int col = IOFile.ColCounter(fileName);
         
-            double[][] initmatrixkeyboard1 = IOFile.readFile(namefile,nR,nC); 
+            double[][] initmatrixkeyboard1 = IOFile.readFile(fileName,row,col); 
             IOKeyboard.printMatrix(initmatrixkeyboard1);
             double[][] initmatrixkeyboard2 = new double[initmatrixkeyboard1.length-1][initmatrixkeyboard1[0].length]; 
             double x1 =initmatrixkeyboard1[initmatrixkeyboard1.length-1][0]; 
@@ -167,8 +166,8 @@ public class Interpolasipolinom{
             }
             double[] koefisien1= polynomEq(initmatrixkeyboard2);
             double result1=approach(koefisien1, x1);
-            Menu.menuWritetoFile();
-            int inputYT1 = IOKeyboard.InputOption(read);  
+            int inputYT1 = IOKeyboard.WritetoFileOption(read);  
+
 
             if (inputYT1==1)
             { 
