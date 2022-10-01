@@ -1,4 +1,4 @@
-public class Interpolasipolinom extends Proto{ 
+public class Interpolasipolinom{ 
     public static double approach(double[] koefisien,double X)
     {
         int nkoef = koefisien.length; 
