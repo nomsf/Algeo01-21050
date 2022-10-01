@@ -1,14 +1,8 @@
 import java.util.Scanner;
+
+
 public class Interpolasipolinom{ 
-    public static double[][] scanfile(Scanner read)
-    {
-        String namefile; 
-        namefile=IOFile.InputFileName(read);
-        int nR = IOFile.RowCounter(namefile);
-        int nC = IOFile.ColCounter(namefile); 
-        double[][] initmatrix= IOFile.readFile(namefile, nR, nC) ;
-        return initmatrix; 
-    }
+    
     public static double approach(double[] koefisien,double X)
     {
         int nkoef = koefisien.length; 
@@ -129,48 +123,60 @@ public class Interpolasipolinom{
         
         int input=IOKeyboard.InputOption(read); 
         
-        switch(input) {
-            case 1: 
-                double[][] initmatrixkeyboard = IOKeyboard.readMatrix(read); 
-                double x=0;
-                if(read.hasNextDouble())
-                {
-                    x=read.nextDouble();
-                } 
-                double[] koefisien= polynomEq(initmatrixkeyboard);
-                double result=approach(koefisien, x);
-                Menu.menuWritetoFile();
-                int inputYT = IOKeyboard.InputOption(read);  
+    
+        if (input==1) 
+        {
+            double[][] initmatrixkeyboard = IOKeyboard.readMatrix(read); 
+            System.out.println("masukkan nilai x:");
+            double x=0;
+            if(read.hasNextDouble())
+            {
+                x=read.nextDouble();
+            }
+            double[] koefisien= polynomEq(initmatrixkeyboard);
+            double result=approach(koefisien, x);
+            System.out.printf("\nf(%f)=%f\n",x,result);
+            int inputYT = IOKeyboard.WritetoFileOption(read);  
 
-                switch(inputYT) {
-                    case 1: 
-                        String namafile = read.next("masukkan nama file:") ;
-                        String poleq = equation(koefisien, result); 
-                        IOFile.writeFile_1(namafile,poleq);
-                }
-            case 2: 
-                double[][] initmatrixkeyboard1 = scanfile(read); 
-                double[][] initmatrixkeyboard2 = new double[initmatrixkeyboard1.length-1][initmatrixkeyboard1[0].length]; 
-                double x1 =initmatrixkeyboard1[initmatrixkeyboard1.length-1][0]; 
-                for (int i=0;i<initmatrixkeyboard1.length-1;i++ )
+            if (inputYT==1)  
+            {
+                System.out.print("Masukkan nama file: ");
+                String namafile = read.next() ;
+                String poleq = equation(koefisien, result); 
+                IOFile.writeFile_1(namafile,poleq);
+            }
+        }
+        if(input==2)
+        { 
+             
+            String namefile=IOFile.InputFileName(read);
+            int nR = IOFile.RowCounter(namefile);
+            int nC = IOFile.ColCounter(namefile); 
+        
+            double[][] initmatrixkeyboard1 = IOFile.readFile(namefile,nR,nC); 
+            IOKeyboard.printMatrix(initmatrixkeyboard1);
+            double[][] initmatrixkeyboard2 = new double[initmatrixkeyboard1.length-1][initmatrixkeyboard1[0].length]; 
+            double x1 =initmatrixkeyboard1[initmatrixkeyboard1.length-1][0]; 
+            for (int i=0;i<initmatrixkeyboard1.length-1;i++ )
+            {
+                for (int j=0 ; j<initmatrixkeyboard1[0].length;j++)
                 {
-                    for (int j=0 ; j<initmatrixkeyboard1[0].length;j++)
-                    {
-                        initmatrixkeyboard2[i][j]=initmatrixkeyboard1[i][j]; 
+                    initmatrixkeyboard2[i][j]=initmatrixkeyboard1[i][j]; 
                         
-                    }
                 }
-                double[] koefisien1= polynomEq(initmatrixkeyboard2);
-                double result1=approach(koefisien1, x1);
-                Menu.menuWritetoFile();
-                int inputYT1 = IOKeyboard.InputOption(read);  
+            }
+            double[] koefisien1= polynomEq(initmatrixkeyboard2);
+            double result1=approach(koefisien1, x1);
+            Menu.menuWritetoFile();
+            int inputYT1 = IOKeyboard.InputOption(read);  
 
-                switch(inputYT1) {
-                    case 1: 
-                        String namafile1 = read.next("masukkan nama file:") ;
-                        String poleq1 = equation(koefisien1, result1); 
-                        IOFile.writeFile_1(namafile1,poleq1);
-                }
+            if (inputYT1==1)
+            { 
+                String namafile1 = read.next() ;
+                String poleq1 = equation(koefisien1, result1); 
+                IOFile.writeFile_1(namafile1,poleq1);
+            }
         } 
     }
 }
+
