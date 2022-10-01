@@ -42,7 +42,6 @@ public class IOFile{
         }
         try (Scanner readf = new Scanner(fr)) {
             int colCount = 0;
-            System.out.println(readf.hasNextDouble());
             while (readf.hasNextDouble()) {
                 colCount++;
                 readf.nextDouble();
