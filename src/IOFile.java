@@ -171,4 +171,24 @@ public class IOFile{
             x.printStackTrace();
         }
     }
+
+    public static void writeList(String filename, String[] list){
+
+        try{
+
+            FileWriter write = new FileWriter(filename);
+            
+            for(int i = 0; i < list.length; i++){
+                write.write(list[i] + " ");
+                write.write("\n");
+            }
+            
+            write.close();
+            System.out.println("-----  " + "Berhasil menuliskan pada " + filename +"  -----");
+
+        } catch(IOException x){
+            System.out.println("Error dalam menyimpan jawaban. ");
+            x.printStackTrace();
+        }
+    }
 }

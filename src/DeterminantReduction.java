@@ -127,10 +127,4 @@ public class DeterminantReduction {
 
 
 
-        public static void main(String[] args) {
-
-            Scanner read = new Scanner(System.in);
-
-            reductionDriver(read);
-     }
 }

@@ -124,10 +124,4 @@ public class InverseGauss {
 
     }
 
-    public static void main(String[] args){
-        
-        Scanner read = new Scanner(System.in);
-
-        inverseGaussDriver(read);
-    }
 }

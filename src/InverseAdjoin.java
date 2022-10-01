@@ -57,13 +57,5 @@ public class InverseAdjoin {
 
     }
 
-    public static void main(String[] args){
-
-        Scanner read = new Scanner(System.in);
-
-        adjoinDriver(read);
-        
-    }
-    
     
 }

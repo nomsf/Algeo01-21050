@@ -113,12 +113,4 @@ public class Cofactor {
 
     }
 
-    public static void main(String[] args) {
-
-        Scanner read = new Scanner(System.in);
-
-        cofactorDriver(read);
-        
-        
-    }
 }

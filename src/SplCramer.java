@@ -46,8 +46,10 @@ public class SplCramer{
             int marow = MatrixOp.getRow(mA);
             int macol = MatrixOp.getCol(mA);
 
-            String rlist = "";
+            String[] listr = new String[macol];
+            String r = "";
 
+            System.out.println("-----  Hasil Perhitungan  -----");
             for (int count = 0; count < macol ; count++){
                 for (int i = 0; i < marow; i++ ){
                     for (int j = 0; j < macol; j++){
@@ -64,17 +66,18 @@ public class SplCramer{
 
                 dettemp = Cofactor.determinantKofaktor(mtemp);
 
-                rlist += "X" + String.valueOf(count+1) + " = " + (String.valueOf(dettemp/det) + "   ");
+                r = "X" +(String.valueOf(count+1)) + " = " + (String.valueOf((dettemp/det)+ "   "));
+                listr[count] = r;
+                System.out.println(r);
             }
 
-            System.out.println("-----  Hasil Perhitungan  -----");
-            System.out.println(rlist);
+            
 
             int opt = IOKeyboard.WritetoFileOption(read);
 
             if(opt == 1){
                 String fname = IOFile.InputFileName(read);
-                IOFile.writeFile_1(fname, rlist);
+                IOFile.writeList(fname, listr);
             }
 
         }
@@ -107,13 +110,4 @@ public class SplCramer{
     }
 
 
-    public static void main(String[] args){
-
-        Scanner read = new Scanner(System.in);
-
-        splcramerDriver(read);
-
-    }
-
-    
 }

@@ -44,23 +44,26 @@ public class SplBalikan {
         else{
             double[][] minv = InverseGauss.inverseGauss(mA);
             
-            IOKeyboard.printMatrix(minv);
+            // IOKeyboard.printMatrix(minv);
 
             double[][] result = MatrixOp.matrixTimes(minv, mB);
-            String listr = "";
+            String r = "";
+            String[] listr = new String[MatrixOp.getRow(result)];
 
+            System.out.println("-----  Hasil Perhitungan  -----");
             for(int i = 0; i < MatrixOp.getRow(result); i++){
-                listr += "X" +(String.valueOf(i+1)) + " = " + (String.valueOf(result[i][0] + "   "));
+                r = "X" +(String.valueOf(i+1)) + " = " + (String.valueOf(result[i][0] + "   "));
+                listr[i] = r;
+                System.out.println(r);
                 
             }
-            System.out.println("-----  Hasil Perhitungan  -----");
-            System.out.println(listr);
+            
 
             int opt = IOKeyboard.WritetoFileOption(read);
 
             if(opt == 1){
                 String fname = IOFile.InputFileName(read);
-                IOFile.writeFile_1(fname, listr);
+                IOFile.writeList(fname, listr);
             }
 
         }
@@ -91,13 +94,5 @@ public class SplBalikan {
 
     }
 
-    
 
-    public static void main(String[] args){
-
-        Scanner read = new Scanner(System.in);
-
-        splbalikanDriver(read);
-
-    }
 }
