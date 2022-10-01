@@ -23,14 +23,6 @@ public class MatrixOp {
         }
     }
 
-    static int findVal(int[] arr, int val){
-        // return index dari value yg ditemukan
-        for(int i = 0; i < arr.length; i++){
-
-        }
-        return 0;
-    }
-
     static void timesVal(double[][] m , double val){
         // kali setiap elemen dengan suatu value
         for(int i = 0; i < getRow(m); i++){
@@ -133,7 +125,7 @@ public class MatrixOp {
 
         for (int i = 0; i < getRow(m1); i++){
             for (int j = 0; j < getCol(m2); j++){
-                int temp = 0;
+                double temp = 0;
                 for(int k = 0; k < getCol(m1); k++){
                     temp += m1[i][k] * m2[k][j];
                 }

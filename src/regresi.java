@@ -55,12 +55,14 @@ public class regresi{
     /* Driver */
     public static void regresidriver(Scanner read) {
         int opt = IOKeyboard.InputOption(read);
+        double[][] res;
+        double restaksir;
         if(opt == 1){
             double[][] mat = IOKeyboard.readMatrixRegresi(read);
-            double[][] res = regresisolver(mat);
+            res = regresisolver(mat);
             printpers(res);
             double[] xtaksir = IOKeyboard.readArrTaksir(read, res.length - 1);
-            taksir(xtaksir, res);
+            restaksir = taksir(xtaksir, res);
         }
         else{
             String fileName = IOFile.InputFileName(read);
@@ -72,6 +74,7 @@ public class regresi{
             
             interpretasi penulisan xk yang akan ditaksir
             adalah pada baris terakhir mulai kolom pertama sampai kolom - 1.
+            kolom terakhir berisi elemen penanda -1.
             
             */
             double[][] matandtaksir = IOFile.readFile(fileName, row, col); 
@@ -85,16 +88,16 @@ public class regresi{
             for(int i = 0; i < col - 1; i++){
                 xtaksir[i] = matandtaksir[row - 1][i];
             }
-            double[][] res = regresisolver(mat);
+            res = regresisolver(mat);
             printpers(res);
-            double restaksir = taksir(xtaksir, res);
-            int optw = IOKeyboard.WritetoFileOption(read);
-            if(optw == 1){
-                String fileName_write = IOFile.InputFileName(read);
-                boolean iswritesc = IOFile.createFile(fileName_write);
-                if(iswritesc){
-                    IOFile.writeRegresi(fileName_write, res, restaksir);
-                }
+            restaksir = taksir(xtaksir, res);
+        }
+        int optw = IOKeyboard.WritetoFileOption(read);
+        if(optw == 1){
+            String fileName_write = IOFile.InputFileName(read);
+            boolean iswritesc = IOFile.createFile(fileName_write);
+            if(iswritesc){
+                IOFile.writeRegresi(fileName_write, res, restaksir);
             }
         }
     }
