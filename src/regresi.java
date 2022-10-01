@@ -4,25 +4,30 @@ public class regresi{
     public static double[][] regresisolver(double[][] mat){
         int row = mat.length;
         int col = mat[0].length;
-        double[][] aug = new double[row][col + 1];
-        for (int i = 0; i < row; i++) {
-            aug[i][0] = 1;
+        double[][] X = new double[row][col];
+        double[][] Y = new double[row][1];
+        for(int i = 0; i < row; i++) {
+            X[i][0] = 1;
         }
-        for (int i = 0; i < row; i++) {
-            for (int j = 1; j <= col; j++) {
-                aug[i][j] = mat[i][j - 1];
+        for(int i = 0; i < row; i++) {
+            for (int j = 1; j < col; j++) {
+                X[i][j] = mat[i][j - 1];
             }
+        }
+        for(int i = 0; i < row; i++){
+            Y[i][0] = mat[i][col - 1];
         }
         double[][] NEE = new double[col][col + 1];
-        for(int i = 0; i < col; i++){
-            for(int j = 0; j < col + 1; j++){
-                NEE[i][j] = 0;
-                for(int k = 0; k < row; k++){
-                    NEE[i][j] += aug[k][i] * aug[k][j];
-                }
+        double[][] XtX = MatrixOp.matrixTimes2(MatrixOp.ftranspose(X), X);
+        double[][] XtY = MatrixOp.matrixTimes2(MatrixOp.ftranspose(X), Y);
+        for(int i = 0; i < col; i++) {
+            for (int j = 0; j < col; j++) {
+                NEE[i][j] = XtX[i][j];
             }
         }
-        //IOKeyboard.printMatrix(NEE);
+        for (int i = 0; i < col; i++) {
+            NEE[i][col] = XtY[i][0];
+        }
         double[][] res = gaussjordan.gaussel(NEE);
         return res;
     }
@@ -62,8 +67,14 @@ public class regresi{
             String fileName = IOFile.InputFileName(read);
             int row = IOFile.RowCounter(fileName);
             int col = IOFile.ColCounter(fileName);
-            /* interpretasi penulisan xk pada baris terakhir mulai kolom pertama sampai kolom -1, 
-            dengan kolom terakhir berisi integer -1 yg tidak dibaca */
+            /*
+            interpretasi penulisan nilai x1..xn (peubah) adalah pada kolom-kolom 
+            bagian kiri sedangkan kolom terakhir berisi nilai y.
+            
+            interpretasi penulisan xk yang akan ditaksir
+            adalah pada baris terakhir mulai kolom pertama sampai kolom - 1.
+            
+            */
             double[][] matandtaksir = IOFile.readFile(fileName, row, col); 
             double[][] mat = new double[row - 1][col];
             for(int i = 0; i < row - 1; i++){

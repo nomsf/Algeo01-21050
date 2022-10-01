@@ -50,6 +50,16 @@ public class MatrixOp {
             }
         }
     }
+    static double[][] ftranspose(double[][] m){
+        double[][] temp = new double[getCol(m)][getRow(m)];
+
+        for(int i = 0; i < getCol(m); i++){
+            for(int j = 0; j < getRow(m); j++){
+                temp[i][j] = m[j][i];
+            }
+        }
+        return temp;
+    }
     public static boolean iscolzero(double[][] mat, int col){
         boolean colzero = true;
         int i = 0;
@@ -110,6 +120,24 @@ public class MatrixOp {
                 for(int k = 0; k < getRow(m2); k++){
                     mr[i][j] += m1[i][k] * m2[k][j];
                 }
+            }
+        }
+
+        return mr;
+
+    }
+
+    static double[][] matrixTimes2(double[][] m1, double[][] m2){
+
+        double[][] mr = new double[getRow(m1)][getCol(m2)]; 
+
+        for (int i = 0; i < getRow(m1); i++){
+            for (int j = 0; j < getCol(m2); j++){
+                int temp = 0;
+                for(int k = 0; k < getCol(m1); k++){
+                    temp += m1[i][k] * m2[k][j];
+                }
+                mr[i][j] = temp;
             }
         }
 
