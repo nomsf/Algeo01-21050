@@ -62,15 +62,63 @@ public class Cofactor extends Proto{
         return det;
     }
 
-    public static void main(String[] args) {
+    public static void cofactorDriver(Scanner read){
+
         double[][] m;
+        String file;
+
+        
+        int opt = IOKeyboard.InputOption(read);
+        
+        if(opt == 1){
+            m = IOKeyboard.readMatrixSPL(read);            
+        }
+            
+        else{
+            file = IOFile.InputFileName(read);
+            int row = IOFile.RowCounter(file);
+            int col = IOFile.ColCounter(file);
+
+            m = IOFile.readFile(file, row, col); 
+        }
+
+        if(MatrixOp.isSquare(m)){
+            double det = determinantKofaktor(m);
+            String result = "Determinan Matriks adalah " + (String.valueOf(det));
+
+            System.out.println("-----  Hasil Perhitungan Determinan  -----");
+            System.out.println(result);
+            
+            opt = IOKeyboard.WritetoFileOption(read);
+
+            if(opt == 1){
+                String filename = IOFile.InputFileName(read);
+
+                IOFile.writeFile_1(filename, result);
+            }
+        }
+
+        else {
+            System.out.println("-----  Matriks Tidak Berbentuk Square  -----");
+        }
+
+            
+        
+
+        
+
+        // display dan write ke filenya
+
+        
+
+    }
+
+    public static void main(String[] args) {
 
         Scanner read = new Scanner(System.in);
+
+        cofactorDriver(read);
         
-        m = IOKeyboard.readMatrix(read);
-
-        IOKeyboard.printMatrix(m);
-
-        System.out.println(determinantKofaktor(m));
+        
     }
 }

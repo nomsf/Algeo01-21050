@@ -18,7 +18,7 @@ public class MAIN extends Menu{
             switch (input){
                 case 1: // spl
                     menuSpl();
-                    input = input(); 
+                    input = input(read); 
                     switch(input){
                         case 1: // elim gauss
                             break;
@@ -33,13 +33,13 @@ public class MAIN extends Menu{
                             break;
 
                         default:
-                            System.out.println("-----  Masukan salah!  -----")
+                            System.out.println("-----  Masukan salah!  -----");
                             break;
                     }
                     break;
                 case 2: // Determinan
                     menuDeterminan();
-                    input = input();
+                    input = input(read);
                     switch(input){
                         case 1: // reduksi baris
 
@@ -49,21 +49,21 @@ public class MAIN extends Menu{
                             break; 
 
                         default:
-                            System.out.println("-----  Masukan salah!  -----")
+                            System.out.println("-----  Masukan salah!  -----");
                             break;
                     }
                     break;
 
                 case 3: // Matriks Balikan
                         menuBalikan();
-                        input = input();
+                        input = input(read);
                         switch(input){
                             case 1: // adjoin
                                 break;
                             case 2: // elim gauss jordan
                                 break;
                             default:
-                                System.out.println("-----  Masukan salah!  -----")
+                                System.out.println("-----  Masukan salah!  -----");
                                 break;
                     }
                     break;
@@ -82,22 +82,24 @@ public class MAIN extends Menu{
                     break;
                 
                 default:
-                    System.out.println("-----  Masukan salah!  -----")
+                    System.out.println("-----  Masukan salah!  -----");
                     break;
             }
 
-            System.out.println("-----  Apakah ingin melanjutkan perhitungan lain? (y/n)  -----")
-            char opt = read.nextLine();
+            System.out.println("-----  Apakah ingin melanjutkan perhitungan lain?  -----");
+            System.out.println("       1. Yes");
+            System.out.println("       2. No");
+            int opt = read.nextInt();
 
-            if ( opt == "y"){
+            if (opt == 1){
                 exit = false;
             }
             else{
-                exit == true;
+                exit = true;
             }
         }
         
-        System.out.println("-----  TERIMAKASIH  -----")
+        System.out.println("-----  TERIMAKASIH  -----");
 
     }
 

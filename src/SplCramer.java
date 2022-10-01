@@ -35,7 +35,7 @@ public class SplCramer{
         }
 
         else if (Cofactor.determinantKofaktor(mA) == 0){
-            System.out.println("-----  Matriks Tidak Mempunyai Balikan!  -----");
+            System.out.println("-----  Determinan Matriks Sama Dengan Nol!  -----");
         }
 
         else{
@@ -67,6 +67,7 @@ public class SplCramer{
                 rlist += "X" + String.valueOf(count+1) + " = " + (String.valueOf(dettemp/det) + "   ");
             }
 
+            System.out.println("-----  Hasil Perhitungan  -----");
             System.out.println(rlist);
 
             int opt = IOKeyboard.WritetoFileOption(read);

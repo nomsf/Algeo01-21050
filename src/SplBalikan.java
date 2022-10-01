@@ -53,6 +53,7 @@ public class SplBalikan {
                 listr += "X" +(String.valueOf(i+1)) + " = " + (String.valueOf(result[i][0] + "   "));
                 
             }
+            System.out.println("-----  Hasil Perhitungan  -----");
             System.out.println(listr);
 
             int opt = IOKeyboard.WritetoFileOption(read);
@@ -89,6 +90,8 @@ public class SplBalikan {
 
 
     }
+
+    
 
     public static void main(String[] args){
 

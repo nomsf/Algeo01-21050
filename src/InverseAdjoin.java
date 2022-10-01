@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.Random;
 
 public class InverseAdjoin {
 
@@ -16,22 +15,55 @@ public class InverseAdjoin {
         return ma;
     }
 
-    public static void main(String[] args){
-        double[][] m = new double[15][15];
-        Random rand = new Random();
-        Scanner read = new Scanner(System.in);
+    public static void adjoinDriver(Scanner read){
 
-        for (int i = 0; i < 15; i++){
-            for (int j = 0; j < 15; j++){
-                m[i][j] = rand.nextInt(15);
-            }
+        double[][] m;
+        String file;
+
+        
+        int opt = IOKeyboard.InputOption(read);
+        
+        if(opt == 1){
+            m = IOKeyboard.readMatrixSPL(read);            
+        }
+            
+        else{
+            file = IOFile.InputFileName(read);
+            int row = IOFile.RowCounter(file);
+            int col = IOFile.ColCounter(file);
+
+            m = IOFile.readFile(file, row, col); 
         }
 
+        if(Cofactor.determinantKofaktor(m) != 0){
+            double[][] minv = inverseAdjoin(m);
+        
 
-        IOKeyboard.printMatrix(m);
+            System.out.println("-----  Hasil Inverse Determinan  -----");
+            System.out.println("");
+            IOKeyboard.printMatrix(minv);
+            
+            opt = IOKeyboard.WritetoFileOption(read);
 
-        System.out.println("hasil inverse: ");
+            if(opt == 1){
+                String filename = IOFile.InputFileName(read);
 
-        IOKeyboard.printMatrix(inverseAdjoin(m));
+                IOFile.writeMatrix(filename, minv);
+            }
+        }
+        else{
+            System.out.println("-----  Matriks Tidak Punya Inverse  -----");
+        }
+
     }
+
+    public static void main(String[] args){
+
+        Scanner read = new Scanner(System.in);
+
+        adjoinDriver(read);
+        
+    }
+    
+    
 }

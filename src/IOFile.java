@@ -103,7 +103,7 @@ public class IOFile{
             FileWriter write = new FileWriter(filename);
             write.write(val);
             write.close();
-            System.out.println("-----  Jawaban sudah tersimpan  -----");
+            System.out.println("-----  " + "Berhasil menuliskan pada " + filename +"  -----");
 
         }
         catch(IOException x){
@@ -132,7 +132,7 @@ public class IOFile{
             myWriter.write(restaksir + "\n");
             myWriter.write("\n");
             myWriter.close();
-            System.out.println("Berhasil menuliskan pada " + fileName);
+            System.out.println("-----  " + "Berhasil menuliskan pada " + fileName +"  -----");
             } catch (IOException e) {
                 System.out.println("Error!");
             }
@@ -147,9 +147,29 @@ public class IOFile{
             }
             myWriter.write("\n");
             myWriter.close();
-            System.out.println("Berhasil menuliskan pada " + fileName);
+            System.out.println("-----  " + "Berhasil menuliskan pada " + fileName +"  -----");
             } catch (IOException e) {
                 System.out.println("Error!");
             }
+    }
+
+    public static void writeMatrix(String filename, double[][] m){
+        try{
+
+            FileWriter write = new FileWriter(filename);
+            
+            for(int i = 0; i < MatrixOp.getRow(m); i++){
+                for(int j = 0; j < MatrixOp.getCol(m); j++){
+                    write.write(m[i][j] + " ");
+                }
+                write.write("\n");
+            }
+            write.close();
+            System.out.println("-----  " + "Berhasil menuliskan pada " + filename +"  -----");
+
+        } catch(IOException x){
+            System.out.println("Error dalam menyimpan jawaban. ");
+            x.printStackTrace();
+        }
     }
 }

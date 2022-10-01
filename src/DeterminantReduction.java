@@ -1,27 +1,8 @@
-// ini file buat ngetes algoritma nya aja
+import java.util.Scanner;
 
 
 public class DeterminantReduction {
 
-    // static boolean isCorrect(double[][] m){
-    //     // apakah bentuknya udah bener
-    //     int zCount = 0;
-    //     boolean corr = true;
-
-    //     for (int i = 0; i < getRow(m); i++){
-    //         zCount = 0;
-    //         for (int j = 0; j < getRow(m); j++){
-    //             if (m[i][j] == 0){
-    //                 zCount ++;
-    //             }
-                
-    //             if (zCount >= i){
-    //                 corr = false;
-    //             }
-
-    //         }
-    //     }
-    // }
 
     static int correctionPos(double[][] m){
         // tuker tuker baris biar valid pas dimasukin ke determinanUt
@@ -101,16 +82,55 @@ public class DeterminantReduction {
 
     }
 
+    public static void reductionDriver(Scanner read){
+
+        double[][] m;
+        String file;
+
+        
+        int opt = IOKeyboard.InputOption(read);
+        
+        if(opt == 1){
+            m = IOKeyboard.readMatrixSPL(read);            
+        }
+            
+        else{
+            file = IOFile.InputFileName(read);
+            int row = IOFile.RowCounter(file);
+            int col = IOFile.ColCounter(file);
+
+            m = IOFile.readFile(file, row, col); 
+        }
+
+        if(MatrixOp.isSquare(m)){
+            double det = determinanUt(m);
+            String result = "Determinan Matriks adalah " + (String.valueOf(det));
+
+            System.out.println("-----  Hasil Perhitungan Determinan  -----");
+            System.out.println(result);
+            
+            opt = IOKeyboard.WritetoFileOption(read);
+
+            if(opt == 1){
+                String filename = IOFile.InputFileName(read);
+
+                IOFile.writeFile_1(filename, result);
+            }
+            else {
+                System.out.println("-----  Matriks Tidak Berbentuk Square  -----");
+            }
+        }
+
+            
+    }
+
 
 
 
         public static void main(String[] args) {
 
-    //         double[][] mat = IOKeyboard.readMatrix();
-            
-    //         IOKeyboard.printMatrix(mat); 
-            
+            Scanner read = new Scanner(System.in);
 
-    //         System.out.println(determinanUt(mat));
+            reductionDriver(read);
      }
 }
