@@ -27,9 +27,11 @@ public class MAIN extends Menu{
                             break;
                         
                         case 3: // balikan
+                            SplBalikan.splbalikanDriver(read);
                             break;
 
                         case 4: // cramer
+                            SplCramer.splcramerDriver(read);
                             break;
 
                         default:
@@ -42,10 +44,10 @@ public class MAIN extends Menu{
                     input = input(read);
                     switch(input){
                         case 1: // reduksi baris
-
+                            DeterminantReduction.reductionDriver(read);
                             break;
                         case 2: // ekspansi kofaktor
-
+                            Cofactor.cofactorDriver(read);
                             break; 
 
                         default:
@@ -59,8 +61,10 @@ public class MAIN extends Menu{
                         input = input(read);
                         switch(input){
                             case 1: // adjoin
+                                InverseAdjoin.adjoinDriver(read);
                                 break;
                             case 2: // elim gauss jordan
+                                InverseGauss.inverseGaussDriver(read);
                                 break;
                             default:
                                 System.out.println("-----  Masukan salah!  -----");
