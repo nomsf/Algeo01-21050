@@ -53,8 +53,7 @@ public class regresi{
         return result;
     }
     /* Driver */
-    public static void regresidriver() {
-        Scanner read = new Scanner(System.in);
+    public static void regresidriver(Scanner read) {
         int opt = IOKeyboard.InputOption(read);
         if(opt == 1){
             double[][] mat = IOKeyboard.readMatrixRegresi(read);
@@ -98,9 +97,5 @@ public class regresi{
                 }
             }
         }
-        read.close();
-    }
-    public static void main(String[] args){
-        regresidriver();
     }
 }

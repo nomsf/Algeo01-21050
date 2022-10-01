@@ -60,7 +60,7 @@ public class MatrixOp {
         }
         return temp;
     }
-    public static boolean iscolzero(double[][] mat, int col){
+    public static boolean isColZero2(double[][] mat, int col){
         boolean colzero = true;
         int i = 0;
         while (colzero && i < mat.length){

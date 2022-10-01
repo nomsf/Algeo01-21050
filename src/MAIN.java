@@ -21,9 +21,11 @@ public class MAIN extends Menu{
                     input = input(read); 
                     switch(input){
                         case 1: // elim gauss
+                            gauss.gaussdriver(read);
                             break;
 
                         case 2: // elim gauss jordan
+                            gaussjordan.gaussjordandriver(read);
                             break;
                         
                         case 3: // balikan
@@ -79,6 +81,7 @@ public class MAIN extends Menu{
                     break;
 
                 case 6: // regresi linier berganda
+                    regresi.regresidriver(read);
                     break;
 
                 case 7: // exit

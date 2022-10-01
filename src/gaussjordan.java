@@ -8,7 +8,7 @@ public class gaussjordan{
         int pivotcol = 0;
         int idx = 0;
         while(pivotcol < col && idx < row){
-            if(MatrixOp.iscolzero(mat, pivotcol)){
+            if(MatrixOp.isColZero2(mat, pivotcol)){
                 pivotcol++;
             }
             else{
@@ -198,8 +198,7 @@ public class gaussjordan{
         return param;
     }
     /* Driver */
-    public static void gaussjordandriver() {
-        Scanner read = new Scanner(System.in);
+    public static void gaussjordandriver(Scanner read) {
         int opt = IOKeyboard.InputOption(read);
         if(opt == 1){
             double[][] mat = IOKeyboard.readMatrixSPL(read);
@@ -220,9 +219,5 @@ public class gaussjordan{
                 }
             }
         }
-        read.close();
-    }
-    public static void main(String[] args) {
-        gaussjordandriver();
     }
 }
