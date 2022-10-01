@@ -126,13 +126,17 @@ public class Interpolasipolinom{
 
     public static void Interpolasipolinomdriver(Scanner read)
     {
-        Menu.menuInput();
+        
         int input=IOKeyboard.InputOption(read); 
         
         switch(input) {
             case 1: 
                 double[][] initmatrixkeyboard = IOKeyboard.readMatrix(read); 
-                int x = read.nextInt(); 
+                double x=0;
+                if(read.hasNextDouble())
+                {
+                    x=read.nextDouble();
+                } 
                 double[] koefisien= polynomEq(initmatrixkeyboard);
                 double result=approach(koefisien, x);
                 Menu.menuWritetoFile();
