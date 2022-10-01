@@ -8,7 +8,7 @@ public class gauss{
         int pivotcol = 0;
         int idx = 0;
         while(pivotcol < col && idx < row){
-            if(MatrixOp.iscolzero(mat, pivotcol)){
+            if(MatrixOp.isColZero2(mat, pivotcol)){
                 pivotcol++;
             }
             else{
@@ -186,8 +186,7 @@ public class gauss{
         return param;
     }
     /* Driver */
-    public static void gaussdriver() {
-        Scanner read = new Scanner(System.in);
+    public static void gaussdriver(Scanner read) {
         int opt = IOKeyboard.InputOption(read);
         if(opt == 1){
             double[][] mat = IOKeyboard.readMatrixSPL(read);
@@ -208,9 +207,5 @@ public class gauss{
                 }
             }
         }
-        read.close();
-    }
-    public static void main(String[] args) {
-        gaussdriver();
     }
 }
