@@ -78,7 +78,8 @@ public class MAIN extends Menu{
                     Interpolasipolinom.Interpolasipolinomdriver(read);// interpolasi polinom
                     break;
                       
-                case 5: // interpolasi bicubic
+                case 5: 
+                    bicubicinterpolation.bicubicinterpolationdriver(read);// interpolasi bicubic
                     break;
 
                 case 6: // regresi linier berganda
