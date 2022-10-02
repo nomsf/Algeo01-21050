@@ -19,31 +19,30 @@ public class bicubicinterpolation
     } 
     public static double[] bicubiceq(double[][] startmatrix)
     {
-        int x=-1;
-        int y=-1;
+        
         
        
         int s = 0 ;
         int z=0;  
         double[][] newmatrix = new double[16][16];
-        int count =0; 
-        for(int j=0;j<4;j++)
+        
+        for (int y= -1 ; y<3 ;y++)
         {
-            for( int i=0;i<4;i++)
+            for( int x=-1; x<3 ;x++)
             {
-                double a= x^i; 
-                double b= y^j; 
-                newmatrix[i][j]= a * b;
-                count +=1; 
-                if (count%16==0) {
-                    y+=1; 
-                }
-                if (count%64==0 ){ 
-                    x+=1 ;
-                    y=-1; 
+                for(int j=0;j<4;j++)
+                {
+                    for( int i=0;i<4;i++)
+                    {
+                        double a= x^i; 
+                        double b= y^j; 
+                        newmatrix[i][j]= a * b;
+                    
+                    }
                 }
             }
-        }
+        } 
+        
             
         
         IOKeyboard.printMatrix(newmatrix);
