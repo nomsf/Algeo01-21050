@@ -46,57 +46,22 @@ public class bicubicinterpolation
         
        
         int s = 0 ;
-        int z=0;  
+        
         
         double[][] newmatrix= bicubicinterpolation.matriksinit() ; 
         
 
         double[][] matrixinverse= InverseGauss.inverseGauss(newmatrix);
         double[][] matrixvalue = new double[16][1]; 
-        for(int i=0;i<4;i++)
+        for(int j=0;j<=3;j++)
         {
-            for(int j=0;j<4;j++)  {
+            for(int i=0;i<=3;i++)  {
                 matrixvalue[s][0] = startmatrix[i][j];
                 s++; 
             }
         }
         double[][] matrixkoef = MatrixOp.matrixTimes(matrixinverse, matrixvalue);
-        boolean nol=true;
-        for(int xt=0 ;xt<4; xt++ )
-        {
-            for (int yt = 0;yt<4; yt++ )
-            {
-                while (nol && z<16)
-                { 
-                    if (matrixkoef[z][0]==0) 
-                    {
-                        nol=false; 
-                        System.out.print(""); 
-                    }
-                    else if (matrixkoef[z][0]>0 )
-                    {
-                        if (xt==0 && yt==0)
-                        {
-                            System.out.printf(String.valueOf(matrixkoef[z][0])); 
-                        }
-                        else 
-                        { 
-                            System.out.printf("+"+String.valueOf(matrixkoef[z][0])) ; 
-                        } 
-                    }
-                    else
-                    { 
-                        System.out.printf("-"+String.valueOf(matrixkoef[z][0])); 
-                    }
-                    if (matrixkoef[z][0]!=0) 
-                    {
-                        System.out.printf("X^"+String.valueOf(xt)+"Y^"+ String.valueOf(yt)) ; 
-                    }
-
-                    z++ ; 
-                } 
-            }
-        } 
+        
         double[] matrixbicubic = new double[matrixkoef.length]; 
         for (int m=0 ; m< matrixkoef.length;m++ )
         { 
@@ -134,17 +99,18 @@ public class bicubicinterpolation
             int col = IOFile.ColCounter(fileName);
         
             double[][] initmatrixkeyboard1 = IOFile.readFile(fileName,row,col);
-            double[][] initmatrixkeyboard2 = new double[initmatrixkeyboard1.length-1][initmatrixkeyboard1[0].length]; 
-            double x0 =initmatrixkeyboard1[initmatrixkeyboard1.length-1][0]; 
-            double x01 =initmatrixkeyboard1[initmatrixkeyboard1.length-1][1]; 
-            for (int i=0;i<initmatrixkeyboard1.length-1;i++) 
+            IOKeyboard.printMatrix(initmatrixkeyboard1);
+            double[][] initmatrixkeyboard2 = new double[row-1][col]; 
+            double x0 =initmatrixkeyboard1[row-1][0]; 
+            double x01 =initmatrixkeyboard1[row-1][1]; 
+            for (int j=0;j<row-1;j++) 
             {
-                for (int j=0 ; j<initmatrixkeyboard1[0].length;j++)
+                for (int i=0 ; i<col;i++)
                 {
-                    initmatrixkeyboard2[i][j]=initmatrixkeyboard1[i][j]; 
-                        
+                    initmatrixkeyboard2[i][j]=initmatrixkeyboard1[i][j];      
                 }
             }
+            
             double[] koefisien1=bicubiceq(initmatrixkeyboard2);
             double result1=estimateres(koefisien1, x0 ,x01);
                 
