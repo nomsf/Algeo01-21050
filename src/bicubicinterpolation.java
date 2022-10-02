@@ -17,6 +17,29 @@ public class bicubicinterpolation
         }
         return result; 
     } 
+
+
+
+    public static double[][] matriksinit (){ 
+        double[][] newmatrix=new double[16][16]; 
+        for(int y=-1; y<3 ; y++ )
+        {
+            for(int x=-1;x<3;x++ )
+            { 
+                for(int j=0 ;j<4;j++ )
+                { 
+                    for(int i= 0;i<4; i++ )
+                    { 
+                        double a = x^i;
+                        double b = y^j; 
+                        newmatrix[i][j] = a * b; 
+
+                    }
+                }
+            }
+        }
+        return newmatrix; 
+    }
     public static double[] bicubiceq(double[][] startmatrix)
     {
         
@@ -24,34 +47,16 @@ public class bicubicinterpolation
        
         int s = 0 ;
         int z=0;  
-        double[][] newmatrix = new double[16][16];
         
-        for (int y= -1 ; y<3 ;y++)
-        {
-            for( int x=-1; x<3 ;x++)
-            {
-                for(int j=0;j<4;j++)
-                {
-                    for( int i=0;i<4;i++)
-                    {
-                        double a= x^i; 
-                        double b= y^j; 
-                        newmatrix[i][j]= a * b;
-                    
-                    }
-                }
-            }
-        } 
+        double[][] newmatrix= bicubicinterpolation.matriksinit() ; 
         
-            
-        
-        IOKeyboard.printMatrix(newmatrix);
+
         double[][] matrixinverse= InverseGauss.inverseGauss(newmatrix);
         double[][] matrixvalue = new double[16][1]; 
         for(int i=0;i<4;i++)
         {
             for(int j=0;j<4;j++)  {
-                matrixvalue[s][1] = startmatrix[i][j];
+                matrixvalue[s][0] = startmatrix[i][j];
                 s++; 
             }
         }
