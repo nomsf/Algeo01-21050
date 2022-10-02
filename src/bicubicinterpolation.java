@@ -30,8 +30,8 @@ public class bicubicinterpolation
                 { 
                     for(int i= 0;i<4; i++ )
                     { 
-                        double a = x^i;
-                        double b = y^j; 
+                        double a = Math.pow(x, i);
+                        double b = Math.pow(y, j); 
                         newmatrix[i][j] = a * b; 
 
                     }

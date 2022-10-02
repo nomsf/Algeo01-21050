@@ -13,10 +13,10 @@ public class Interpolasipolinom{
         }
         return hasil;
     }
-    public static double[] polynomEq(double[][] initmatrix) 
+    public static double[][] matrixinterpol(double[][] firstmatrix)
     {
-        int nrows = initmatrix.length;
-        int ncolumns = initmatrix.length + 1; 
+        int nrows = firstmatrix.length;
+        int ncolumns = firstmatrix.length + 1; 
         int i,j;
         double[][] matrixinterpolasi = new double[nrows][ncolumns]; 
         for (i=0;i<nrows;i++) 
@@ -29,17 +29,24 @@ public class Interpolasipolinom{
                 }
                 else if (j==ncolumns-1) 
                 { 
-                    matrixinterpolasi[i][j] = initmatrix[i][1]; 
+                    matrixinterpolasi[i][j] = firstmatrix[i][1]; 
                 }
                 else 
                 { 
-                    matrixinterpolasi[i][j]=Math.pow(initmatrix[i][0], j);
+                    matrixinterpolasi[i][j]=Math.pow(firstmatrix[i][0], j);
                 }
             }
         }
+        return matrixinterpolasi;
+    }
+    public static double[] polynomEq(double[][] initmatrix) 
+    {
+        double[][] matrixinterpolasi=Interpolasipolinom.matrixinterpol(initmatrix); 
+        int nrows=matrixinterpolasi.length;
+        int ncolumns=matrixinterpolasi[0].length; 
         double[][] matrixpolynom = gaussjordan.gaussel(matrixinterpolasi); 
         double[] koefisien = new double[nrows];
-        for (i=0;i<nrows;i++)
+        for (int i=0;i<nrows;i++)
         { 
             koefisien[i]=matrixpolynom[i][ncolumns-1]; 
         }
@@ -129,13 +136,15 @@ public class Interpolasipolinom{
             double[][] initmatrixkeyboard = IOKeyboard.readMatrix(read); 
             System.out.println("masukkan nilai x:");
             double x=0;
-            if(read.hasNextDouble())
+            boolean ada=true; 
+            if(ada)
             {
                 x=read.nextDouble();
+                ada= false; 
             }
             double[] koefisien= polynomEq(initmatrixkeyboard);
             double result=approach(koefisien, x);
-            System.out.printf("\nf(%f)=%f\n",x,result);
+            System.out.printf("\nf(%.2f)=%.2f\n",x,result);
             int inputYT = IOKeyboard.WritetoFileOption(read);  
 
             if (inputYT==1)  
