@@ -100,8 +100,10 @@ public class bicubicinterpolation
         
             double[][] initmatrixkeyboard1 = IOFile.readFile(fileName,row,col);
             IOKeyboard.printMatrix(initmatrixkeyboard1);
-             
+            
+            System.out.print("x0 = ");
             double x0 =read.nextDouble();
+            System.out.print("x01 = ");
             double x01 =read.nextDouble(); 
             
             double[] koefisien1=bicubiceq(initmatrixkeyboard1);
