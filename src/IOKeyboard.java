@@ -1,4 +1,5 @@
 import java.util.Scanner; 
+
 public class IOKeyboard{
     
     public static int InputOption(Scanner read){
@@ -104,3 +105,4 @@ public class IOKeyboard{
         }
     }
 }
+
