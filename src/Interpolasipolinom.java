@@ -183,14 +183,15 @@ public class Interpolasipolinom{
             
             double result1=approach(koefisien1, x1);
             System.out.printf("\nf(%f)=%f\n",x1,result1);
+            String hasil = "\nf(%f)=%f\n"+ String.valueOf(x1) + String.valueOf(result1);
             int inputYT1 = IOKeyboard.WritetoFileOption(read);  
 
 
             if (inputYT1==1)
             { 
                 String namafile1 = IOFile.InputFileName(read) ;
-                String poleq1 = Interpolasipolinom.equation(koefisien1,result1,x1); 
-                IOFile.writeFile_1(namafile1,poleq1);
+
+                IOFile.writeFile_1(namafile1, hasil);
                 
                 
             }
