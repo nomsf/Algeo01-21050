@@ -93,4 +93,14 @@ public class IOKeyboard{
             System.out.println();
         }
     }
+    static void printMatrix1(double[] mat){
+        int ROW = mat.length;
+        
+        for (int i = 0; i < ROW; i++){
+            
+            System.out.print(mat[i]+ " ");
+            
+            System.out.println();
+        }
+    }
 }
