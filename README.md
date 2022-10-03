@@ -1,6 +1,9 @@
 # Algeo01-21050
 
-**Deadline Tubes** : 3 Oktober 2022
+## Overview Program
+
+Program kelompok kami dapat memproses matriks baik dari masukan pengguna melalui keyboard atau melalui file yang telah disiapkan sebelumnya. Semua metode dan cara penyelesaian yang diajarkan di mata kuliah Aljabar Geometri ini kami implementasikan dalam program dengan bentuk algoritma penyelesaian.
+
 
 Pembagian Tugas:
 - SPL_Metode Eliminasi Gauss & Metode Eliminasi Gauss Jordan & Regresi Linear Berganda (**Abil**)
