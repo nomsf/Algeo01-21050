@@ -6,10 +6,12 @@ public class Interpolasipolinom{
     public static double approach(double[] koefisien,double X)
     {
         int nkoef = koefisien.length; 
-        int hasil = 0;  
+        double hasil=0;
         for (int i=0; i<nkoef;i++)
         {
+            
             hasil+=Math.pow(X, i) *koefisien[i]; 
+            System.out.println(hasil);
         }
         return hasil;
     }
@@ -41,14 +43,31 @@ public class Interpolasipolinom{
     }
     public static double[] polynomEq(double[][] initmatrix) 
     {
-        double[][] matrixinterpolasi=Interpolasipolinom.matrixinterpol(initmatrix); 
-        int nrows=matrixinterpolasi.length;
-        int ncolumns=matrixinterpolasi[0].length; 
-        double[][] matrixpolynom = gaussjordan.gaussel(matrixinterpolasi); 
-        double[] koefisien = new double[nrows];
-        for (int i=0;i<nrows;i++)
+        double[][] matrixinterpolasi=Interpolasipolinom.matrixinterpol(initmatrix);
+        int getrow=matrixinterpolasi.length; 
+        int getcol= matrixinterpolasi[0].length; 
+        double[][] matrixintergauss= new double[getrow][getcol+1]; 
+
+        for(int i=0;i<getrow;i++)
         { 
-            koefisien[i]=matrixpolynom[i][ncolumns-1]; 
+            for(int j=0;j<getcol+1;j++)
+            {
+                if(j<getcol)
+                {
+                    matrixintergauss[i][j]=matrixinterpolasi[i][j];
+                } 
+                else 
+                { 
+                    matrixintergauss[i][getcol]= initmatrix[i][1]; 
+                }
+            }
+        }
+        
+        double[][] matrixpolynom = gaussjordan.gaussel(matrixintergauss); 
+        double[] koefisien = new double[getrow];
+        for (int k=0;k<getrow ;k++)
+        { 
+            koefisien[k]=matrixpolynom[k][getcol]; 
         }
         System.out.print("Persamaan polinomial yang dihasilkan adalah: \ny=  ");
         boolean nol=true;
@@ -115,8 +134,9 @@ public class Interpolasipolinom{
             } 
         }
         Scanner read = new Scanner(System.in); 
-        read.close();
-        int X = read.nextInt(); 
+        
+        int X = read.nextInt();
+        read.close(); 
         
         reseq+= "\nf("+String.valueOf(X)+")="+String.valueOf(result); 
         return reseq; 
@@ -133,16 +153,17 @@ public class Interpolasipolinom{
     
         if (input==1) 
         {
-            double[][] initmatrixkeyboard = IOKeyboard.readMatrix(read); 
-            System.out.println("masukkan nilai x:");
-            double x=0;
-            boolean ada=true; 
-            if(ada)
-            {
-                x=read.nextDouble();
-                ada= false; 
-            }
+            double[][] initmatrixkeyboard = IOKeyboard.readMatrix(read);
+            IOKeyboard.printMatrix(initmatrixkeyboard);
+            
+
+            System.out.print("masukkan nilai x:");
+            
+            
+            double x =read.nextDouble(); 
+            
             double[] koefisien= polynomEq(initmatrixkeyboard);
+            
             double result=approach(koefisien, x);
             System.out.printf("\nf(%.2f)=%.2f\n",x,result);
             int inputYT = IOKeyboard.WritetoFileOption(read);  
@@ -163,23 +184,20 @@ public class Interpolasipolinom{
         
             double[][] initmatrixkeyboard1 = IOFile.readFile(fileName,row,col); 
             IOKeyboard.printMatrix(initmatrixkeyboard1);
-            double[][] initmatrixkeyboard2 = new double[initmatrixkeyboard1.length-1][initmatrixkeyboard1[0].length]; 
-            double x1 =initmatrixkeyboard1[initmatrixkeyboard1.length-1][0]; 
-            for (int i=0;i<initmatrixkeyboard1.length-1;i++ )
-            {
-                for (int j=0 ; j<initmatrixkeyboard1[0].length;j++)
-                {
-                    initmatrixkeyboard2[i][j]=initmatrixkeyboard1[i][j]; 
-                        
-                }
-            }
-            double[] koefisien1= polynomEq(initmatrixkeyboard2);
+            
+            double x1 =read.nextDouble(); 
+
+            
+            double[] koefisien1= polynomEq(initmatrixkeyboard1);
+            IOKeyboard.printMatrix1(koefisien1);
             double result1=approach(koefisien1, x1);
+            System.out.printf("\nf(%f)=%f\n",x1,result1);
             int inputYT1 = IOKeyboard.WritetoFileOption(read);  
 
 
             if (inputYT1==1)
             { 
+                System.out.print("masukkan nama file:"); 
                 String namafile1 = read.next() ;
                 String poleq1 = equation(koefisien1, result1); 
                 IOFile.writeFile_1(namafile1,poleq1);

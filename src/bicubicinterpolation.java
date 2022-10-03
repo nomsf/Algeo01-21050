@@ -56,7 +56,7 @@ public class bicubicinterpolation
         for(int j=0;j<=3;j++)
         {
             for(int i=0;i<=3;i++)  {
-                matrixvalue[s][0] = startmatrix[i][j];
+                matrixvalue[s][0] = startmatrix[j][i];
                 s++; 
             }
         }
@@ -100,18 +100,11 @@ public class bicubicinterpolation
         
             double[][] initmatrixkeyboard1 = IOFile.readFile(fileName,row,col);
             IOKeyboard.printMatrix(initmatrixkeyboard1);
-            double[][] initmatrixkeyboard2 = new double[row-1][col]; 
-            double x0 =initmatrixkeyboard1[row-1][0]; 
-            double x01 =initmatrixkeyboard1[row-1][1]; 
-            for (int j=0;j<row-1;j++) 
-            {
-                for (int i=0 ; i<col;i++)
-                {
-                    initmatrixkeyboard2[i][j]=initmatrixkeyboard1[i][j];      
-                }
-            }
+             
+            double x0 =read.nextDouble();
+            double x01 =read.nextDouble(); 
             
-            double[] koefisien1=bicubiceq(initmatrixkeyboard2);
+            double[] koefisien1=bicubiceq(initmatrixkeyboard1);
             double result1=estimateres(koefisien1, x0 ,x01);
                 
             int inputYT1 = IOKeyboard.WritetoFileOption(read);  
