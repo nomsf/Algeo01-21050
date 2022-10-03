@@ -64,12 +64,13 @@ public class Interpolasipolinom{
         }
         
         double[][] matrixpolynom = gaussjordan.gaussel(matrixintergauss); 
+
         double[] koefisien = new double[getrow];
         for (int k=0;k<getrow ;k++)
         { 
             koefisien[k]=matrixpolynom[k][getcol]; 
         }
-        IOKeyboard.printMatrix1(koefisien);
+        
         System.out.print("Persamaan polinomial yang dihasilkan adalah: \ny=  ");
         boolean nol=true;
         for (int z = koefisien.length-1;z>=0; z--)
@@ -100,7 +101,7 @@ public class Interpolasipolinom{
     }
     
     
-    public static String equation (double[] koefisien,double result)
+    public static String equation (double[] koefisien,double result,double x)
     {
         String reseq ="Persamaan polinomial yang dihasilkan adalah: \nf(x)=  ";
         boolean nol=true;
@@ -134,12 +135,11 @@ public class Interpolasipolinom{
                 }
             } 
         }
-        Scanner read = new Scanner(System.in); 
         
-        int X = read.nextInt();
-        read.close(); 
         
-        reseq+= "\nf("+String.valueOf(X)+")="+String.valueOf(result); 
+        
+        
+        reseq+= "\nf("+String.valueOf(x)+")="+String.valueOf(result); 
         return reseq; 
     
     }
@@ -173,7 +173,7 @@ public class Interpolasipolinom{
             {
                 System.out.print("Masukkan nama file: ");
                 String namafile = read.next() ;
-                String poleq = equation(koefisien, result); 
+                String poleq = equation(koefisien, result,x); 
                 IOFile.writeFile_1(namafile,poleq);
             }
         }
@@ -190,7 +190,7 @@ public class Interpolasipolinom{
 
             
             double[] koefisien1= polynomEq(initmatrixkeyboard1);
-            IOKeyboard.printMatrix1(koefisien1);
+            
             double result1=approach(koefisien1, x1);
             System.out.printf("\nf(%f)=%f\n",x1,result1);
             int inputYT1 = IOKeyboard.WritetoFileOption(read);  
@@ -200,8 +200,8 @@ public class Interpolasipolinom{
             { 
                 System.out.print("masukkan nama file:"); 
                 String namafile1 = read.next() ;
-                String poleq1 = equation(koefisien1, result1); 
-                IOFile.writeFile_1(namafile1,poleq1);
+                String poleq1 = equation(koefisien1, result1,x1); 
+                IOFile.writeFile_1(namafile1,poleq1); 
             }
         } 
     }
