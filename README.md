@@ -15,7 +15,7 @@ Pembagian Tugas:
 - [x] SPL_Kaidah Cramer
 - [x] Determinan
 - [x] Matriks Balikan
-- [ ] Interpolasi Polinom
+- [x] Interpolasi Polinom
 - [x] Interpolasi Bicubic
 - [x] Regresi Linear Berganda
-- [ ] Laporan
+- [x] Laporan
