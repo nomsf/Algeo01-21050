@@ -41,63 +41,51 @@ public class Interpolasipolinom{
         }
         return matrixinterpolasi;
     }
-    public static double[] polynomEq(double[][] initmatrix) 
-    {
-        double[][] matrixinterpolasi=Interpolasipolinom.matrixinterpol(initmatrix);
-        int getrow=matrixinterpolasi.length; 
-        int getcol= matrixinterpolasi[0].length; 
-        double[][] matrixintergauss= new double[getrow][getcol+1]; 
+    public static double[] polynomEq(double[][] matrix) {
+        
 
-        for(int i=0;i<getrow;i++)
-        { 
-            for(int j=0;j<getcol+1;j++)
-            {
-                if(j<getcol)
-                {
-                    matrixintergauss[i][j]=matrixinterpolasi[i][j];
-                } 
-                else 
-                { 
-                    matrixintergauss[i][getcol]= initmatrix[i][1]; 
+        int nrow = matrix.length;
+        int ncol = matrix.length + 1;
+        double[][] matriksPolinom = new double[nrow][ncol];
+        for (int i = 0; i < nrow; i++) {
+            for (int j = 0; j < ncol; j++) {
+                if (j == (ncol - 1)) {
+                    matriksPolinom[i][j] = matrix[i][1];
+                } else if (j == 0) {
+                    matriksPolinom[i][0] = 1.00;
+                } else {
+                    matriksPolinom[i][j] = Math.pow(matrix[i][0], j);
+                }
+            }
+
+        }
+        
+        double[][] newMatrix = gaussjordan.gaussel(matriksPolinom);
+        
+        double[] koefisien = new double[nrow];
+        for (int i = 0; i < nrow; i++) {
+            koefisien[i] = newMatrix[i][ncol - 1];
+        }
+
+        
+        boolean nul = true;
+        System.out.print("Persamaan polinomial yang dihasilkan\ny =");
+        for (int i = koefisien.length - 1; i >= 0; i--) {
+            if (koefisien[i]!=0) {
+                if (nul)
+                    nul = false;
+                else if (koefisien[i] > 0 && !nul)
+                    System.out.print(" +");
+                    System.out.printf( " %f", koefisien[i]);
+                if (i != 0) {
+                    System.out.printf(" x^%d", i);
                 }
             }
         }
-        
-        double[][] matrixpolynom = gaussjordan.gaussel(matrixintergauss); 
+        System.out.println();
 
-        double[] koefisien = new double[getrow];
-        for (int k=0;k<getrow ;k++)
-        { 
-            koefisien[k]=matrixpolynom[k][getcol]; 
-        }
-        
-        System.out.print("Persamaan polinomial yang dihasilkan adalah: \ny=  ");
-        boolean nol=true;
-        for (int z = koefisien.length-1;z>=0; z--)
-        {
-            while (nol)
-            { 
-                if (koefisien[z]==0) 
-                {
-                    nol=false; 
-                }
-                else if (koefisien[z]>0 )
-                {
-                    System.out.printf("+ %f",koefisien[z]); 
-                }
-                else
-                { 
-                    System.out.printf("- %f",koefisien[z]); 
-                }
-                if (z!=0) 
-                {
-                    System.out.printf("X^%d",z); 
-                }
-            } 
-        }
+        return koefisien;
 
-    
-        return koefisien; 
     }
     
     
@@ -143,8 +131,9 @@ public class Interpolasipolinom{
         return reseq; 
     
     }
-        
-
+    
+   
+               
 
     public static void Interpolasipolinomdriver(Scanner read)
     {
@@ -163,7 +152,7 @@ public class Interpolasipolinom{
             
             double x =read.nextDouble(); 
             
-            double[] koefisien= polynomEq(initmatrixkeyboard);
+            double[] koefisien= Interpolasipolinom.polynomEq(initmatrixkeyboard);
             
             double result=approach(koefisien, x);
             System.out.printf("\nf(%.2f)=%.2f\n",x,result);
@@ -189,7 +178,7 @@ public class Interpolasipolinom{
             double x1 =read.nextDouble(); 
 
             
-            double[] koefisien1= polynomEq(initmatrixkeyboard1);
+            double[] koefisien1= Interpolasipolinom.polynomEq(initmatrixkeyboard1);
             
             double result1=approach(koefisien1, x1);
             System.out.printf("\nf(%f)=%f\n",x1,result1);
@@ -198,10 +187,11 @@ public class Interpolasipolinom{
 
             if (inputYT1==1)
             { 
-                System.out.print("masukkan nama file:"); 
                 String namafile1 = read.next() ;
-                String poleq1 = equation(koefisien1, result1,x1); 
-                IOFile.writeFile_1(namafile1,poleq1); 
+                String poleq1 = Interpolasipolinom.equation(koefisien1,result1,x1); 
+                IOFile.writeFile_1(namafile1,poleq1);
+                
+                
             }
         } 
     }
