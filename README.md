@@ -1,8 +1,6 @@
 # Algeo01-21050
 
-- Deadline Tubes : 3 Oktober 2022
-- Deadline Tugas Individu : 25 September 2022
-
+**Deadline Tubes** : 3 Oktober 2022
 
 Pembagian Tugas:
 - SPL_Metode Eliminasi Gauss & Metode Eliminasi Gauss Jordan & Regresi Linear Berganda (**Abil**)
@@ -18,6 +16,6 @@ Pembagian Tugas:
 - [x] Determinan
 - [x] Matriks Balikan
 - [ ] Interpolasi Polinom
-- [ ] Interpolasi Bicubic
-- [ ] Regresi Linear Berganda
+- [x] Interpolasi Bicubic
+- [x] Regresi Linear Berganda
 - [ ] Laporan

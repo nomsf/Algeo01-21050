@@ -98,7 +98,7 @@ public class MAIN extends Menu{
             System.out.println("-----  Apakah ingin melanjutkan perhitungan lain?  -----");
             System.out.println("       1. Yes");
             System.out.println("       2. No");
-            int opt = read.nextInt();
+            int opt = Menu.input(read);
 
             if (opt == 1){
                 exit = false;

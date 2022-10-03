@@ -3,13 +3,13 @@ public class IOKeyboard{
     
     public static int InputOption(Scanner read){
         Menu.menuInput();
-        int i = read.nextInt();
+        int i = Menu.input(read);
         return i;
     }
 
     public static int WritetoFileOption(Scanner read){
         Menu.menuWritetoFile();
-        int i = read.nextInt();
+        int i = Menu.input(read);
         return i;
     }
 
