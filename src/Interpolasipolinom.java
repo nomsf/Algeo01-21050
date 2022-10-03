@@ -69,6 +69,7 @@ public class Interpolasipolinom{
         { 
             koefisien[k]=matrixpolynom[k][getcol]; 
         }
+        IOKeyboard.printMatrix1(koefisien);
         System.out.print("Persamaan polinomial yang dihasilkan adalah: \ny=  ");
         boolean nol=true;
         for (int z = koefisien.length-1;z>=0; z--)

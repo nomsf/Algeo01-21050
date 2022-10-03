@@ -113,6 +113,8 @@ public class bicubicinterpolation
                 String namafile1 = read.next() ;
                 String bicubiceq1 = "f("+String.valueOf(x0)+","+String.valueOf(x01) +")= " + String.valueOf(result1); 
                 IOFile.writeFile_1(namafile1,bicubiceq1);
+                String bicubiceq = "f("+String.valueOf(x0)+","+String.valueOf(x01)+")= " + String.valueOf(result1); 
+                System.out.println(bicubiceq);
             }
         } 
     
