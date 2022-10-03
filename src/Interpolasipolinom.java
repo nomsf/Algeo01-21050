@@ -175,6 +175,7 @@ public class Interpolasipolinom{
             double[][] initmatrixkeyboard1 = IOFile.readFile(fileName,row,col); 
             IOKeyboard.printMatrix(initmatrixkeyboard1);
             
+            System.out.print("x1 = ");
             double x1 =read.nextDouble(); 
 
             
@@ -187,7 +188,7 @@ public class Interpolasipolinom{
 
             if (inputYT1==1)
             { 
-                String namafile1 = read.next() ;
+                String namafile1 = IOFile.InputFileName(read) ;
                 String poleq1 = Interpolasipolinom.equation(koefisien1,result1,x1); 
                 IOFile.writeFile_1(namafile1,poleq1);
                 

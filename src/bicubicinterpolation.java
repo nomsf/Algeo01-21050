@@ -108,15 +108,17 @@ public class bicubicinterpolation
             
             double[] koefisien1=bicubiceq(initmatrixkeyboard1);
             double result1=estimateres(koefisien1, x0 ,x01);
+
+            String bicubiceq = "f("+String.valueOf(x0)+","+String.valueOf(x01)+")= " + String.valueOf(result1); 
+            System.out.println(bicubiceq);
                 
             int inputYT1 = IOKeyboard.WritetoFileOption(read);  
  
             if (inputYT1==1 ) { 
-                String namafile1 = read.next() ;
+                String namafile1 = IOFile.InputFileName(read) ;
                 String bicubiceq1 = "f("+String.valueOf(x0)+","+String.valueOf(x01) +")= " + String.valueOf(result1); 
                 IOFile.writeFile_1(namafile1,bicubiceq1);
-                String bicubiceq = "f("+String.valueOf(x0)+","+String.valueOf(x01)+")= " + String.valueOf(result1); 
-                System.out.println(bicubiceq);
+                
             }
         } 
     
