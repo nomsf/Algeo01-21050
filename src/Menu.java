@@ -59,6 +59,7 @@ public class Menu{
 
     public static int input(Scanner read){
 
+        System.out.println("");
         System.out.print("Masukan pilihan anda: ");
         int x = read.nextInt();
 
